@@ -1,19 +1,8 @@
 # -*- coding: utf-8 -*-
-
-###########################################################################
-## Python code generated with wxFormBuilder (version Jan 25 2018)
-## http://www.wxformbuilder.org/
-##
-## PLEASE DO *NOT* EDIT THIS FILE!
-###########################################################################
-
 import wx
 import wx.xrc
+import sqlite3
 
-
-###########################################################################
-## Class MainFrame
-###########################################################################
 
 class MainFrame(wx.Frame):
     def __init__(self, parent):
@@ -28,14 +17,13 @@ class MainFrame(wx.Frame):
         pass
 
 
-###########################################################################
-## Class MainFramePanel
+############################################################################# Class MainFramePanel
 ###########################################################################
 
 class MainFramePanel(wx.Panel):
     def __init__(self, parent):
         wx.Panel.__init__(self, parent, id=wx.ID_ANY, pos=wx.DefaultPosition, size=wx.Size(500, 500),
-                          style=wx.TAB_TRAVERSAL)
+                          style=wx.FULL_REPAINT_ON_RESIZE)
 
         bSizer1 = wx.BoxSizer(wx.VERTICAL)
 
@@ -82,8 +70,8 @@ class MainFramePanel(wx.Panel):
         self.lbl_zachetka.Wrap(-1)
         fgSizer1.Add(self.lbl_zachetka, 0, wx.ALL, 5)
 
-        self.m_textCtrl5 = wx.TextCtrl(self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0)
-        fgSizer1.Add(self.m_textCtrl5, 0, wx.ALL, 5)
+        self.inpt_zachetka = wx.TextCtrl(self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0)
+        fgSizer1.Add(self.inpt_zachetka, 0, wx.ALL, 5)
 
         bSizer1.Add(fgSizer1, 1, wx.EXPAND, 5)
 
@@ -99,10 +87,35 @@ class MainFramePanel(wx.Panel):
 
         self.SetSizer(bSizer1)
         self.Layout()
-        self.Show()
 
-    def __del__(self):
+        self.btn_page2.Bind(wx.EVT_BUTTON, self.go_page2)
+
+    def on_init(self):
         pass
+
+
+    def go_page2(self,event):
+        text = []
+        login = " "
+        name = self.inpt_name.GetValue()
+        text.append(name)
+        login = ''.join(str(name))
+        familia = self.inpt_familia.GetValue()
+        text.append(familia)
+
+        group = self.inpt_group.GetValue()
+        text.append(group)
+
+        zach_numb = str(self.inpt_zachetka.GetValue())
+
+        variant_num = zach_numb[-2:len(zach_numb)]
+        from gui import page2
+
+        page2.MyPanel5.run_page(self)
+        print(login)
+
+
+
 
 app = wx.App()
 frame = MainFrame(None)
