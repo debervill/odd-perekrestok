@@ -4,6 +4,7 @@ import wx.xrc
 import sqlite3
 
 
+
 class MainFrame(wx.Frame):
     def __init__(self, parent):
         wx.Frame.__init__(self, parent, id=wx.ID_ANY, title=wx.EmptyString, pos=wx.DefaultPosition,
@@ -17,9 +18,6 @@ class MainFrame(wx.Frame):
         pass
 
 
-############################################################################# Class MainFramePanel
-###########################################################################
-
 class MainFramePanel(wx.Panel):
     def __init__(self, parent):
         wx.Panel.__init__(self, parent, id=wx.ID_ANY, pos=wx.DefaultPosition, size=wx.Size(500, 500),
@@ -32,7 +30,7 @@ class MainFramePanel(wx.Panel):
         self.lbl_kaf.Wrap(-1)
         bSizer1.Add(self.lbl_kaf, 0, wx.ALIGN_CENTER | wx.ALL, 5)
 
-        self.lbl_NameProg = wx.StaticText(self, wx.ID_ANY, u"Расчёт цикла светофорного регулирования на перекрёстке\n",
+        self.lbl_NameProg = wx.StaticText(self, wx.ID_ANY, u"Расчёт цикла светофорного регулирования на перекрёстке",
                                           wx.DefaultPosition, wx.DefaultSize, 0)
         self.lbl_NameProg.Wrap(-1)
         bSizer1.Add(self.lbl_NameProg, 0, wx.ALIGN_CENTER | wx.ALL, 5)
@@ -93,28 +91,24 @@ class MainFramePanel(wx.Panel):
     def on_init(self):
         pass
 
+    def go_page2(self, event):
+        values = []
 
-    def go_page2(self,event):
-        text = []
-        login = " "
         name = self.inpt_name.GetValue()
-        text.append(name)
-        login = ''.join(str(name))
+        values.append(name)
         familia = self.inpt_familia.GetValue()
-        text.append(familia)
+        values.append(familia)
 
         group = self.inpt_group.GetValue()
-        text.append(group)
+        values.append(group)
 
         zach_numb = str(self.inpt_zachetka.GetValue())
 
         variant_num = zach_numb[-2:len(zach_numb)]
         from gui import page2
+        print(values)
 
         page2.MyPanel5.run_page(self)
-        print(login)
-
-
 
 
 app = wx.App()
