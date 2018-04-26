@@ -46,7 +46,9 @@ class MyPanel5(wx.Panel):
 
         fgSizer2.Add(self.shema_perekr, 1, wx.ALL | wx.ALIGN_RIGHT, 5)
 
-        self.kartogramma = wx.StaticBitmap(self, wx.ID_ANY, wx.Bitmap(u"src/kartogramma_perekrestka.gif", wx.BITMAP_TYPE_ANY))
+        kartogramm_scaled = wx.Image(u"src/kartogramma_perekrestka.gif").Scale(150,150).ConvertToBitmap()
+        self.kartogramma = wx.StaticBitmap(self, wx.ID_ANY, kartogramm_scaled)
+
 
         fgSizer2.Add(self.kartogramma, 1, wx.ALIGN_RIGHT | wx.EXPAND, 5)
 
