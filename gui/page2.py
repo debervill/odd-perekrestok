@@ -1,25 +1,16 @@
 import wx
-
-
-class MyFrame4(wx.Frame):
-    def __init__(self, parent):
-        wx.Frame.__init__(self, parent, id=wx.ID_ANY, title=wx.EmptyString, pos=wx.DefaultPosition,
-                          size=wx.Size(500, 500), style=wx.DEFAULT_FRAME_STYLE | wx.TAB_TRAVERSAL)
-
-        self.SetSizeHints(wx.DefaultSize, wx.DefaultSize)
-
-        self.Centre(wx.BOTH)
-        self.Maximize(True)
-
-    def __del__(self):
-        pass
+import src
 
 
 
-class MyPanel5(wx.Panel):
+
+
+
+class MainFramePanel(wx.Panel):
     def __init__(self, parent):
         wx.Panel.__init__(self, parent, id=wx.ID_ANY, pos=wx.DefaultPosition, size=wx.Size(500, 500),
                           style=wx.FULLSCREEN_NOBORDER)
+        self.frame = parent
         self.Bind(wx.EVT_PAINT, self.onPaint)
 
         bSizer2 = wx.BoxSizer(wx.VERTICAL)
@@ -46,7 +37,7 @@ class MyPanel5(wx.Panel):
 
         fgSizer2.Add(self.shema_perekr, 1, wx.ALL | wx.ALIGN_RIGHT, 5)
 
-        kartogramm_scaled = wx.Image(u"src/kartogramma_perekrestka.gif").Scale(150,150).ConvertToBitmap()
+        kartogramm_scaled = wx.Image(u"src/kartogramma_perekrestka.gif").Scale(400,500).ConvertToBitmap()
         self.kartogramma = wx.StaticBitmap(self, wx.ID_ANY, kartogramm_scaled)
 
 
@@ -79,7 +70,20 @@ class MyPanel5(wx.Panel):
 
     def run_page(self):
         app = wx.App()
-        frame = MyFrame4(None)
-        panel = MyPanel5(frame)
+        frame = MainFrame(None)
         frame.Show()
         app.MainLoop()
+
+class MainFrame(wx.Frame):
+    def __init__(self, parent):
+        wx.Frame.__init__(self, parent, id=wx.ID_ANY, title=wx.EmptyString, pos=wx.DefaultPosition,
+                          size=wx.Size(500, 500), style=wx.DEFAULT_FRAME_STYLE | wx.TAB_TRAVERSAL)
+
+        self.SetSizeHints(wx.DefaultSize, wx.DefaultSize)
+
+        self.Centre(wx.BOTH)
+        self.Maximize(True)
+        panel = MainFramePanel(self)
+
+if __name__ == '__main__':
+    MainFramePanel.run_page(None)

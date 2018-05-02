@@ -14,8 +14,7 @@ class MainFrame(wx.Frame):
 
         self.Centre(wx.BOTH)
 
-    def __del__(self):
-        pass
+
 
 
 class MainFramePanel(wx.Panel):
