@@ -1,10 +1,4 @@
 import wx
-import src
-
-
-
-
-
 
 class MainFramePanel(wx.Panel):
     def __init__(self, parent):

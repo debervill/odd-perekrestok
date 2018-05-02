@@ -106,7 +106,7 @@ class MainFramePanel(wx.Panel):
 
         print(values)
         self.frame.Hide()
-        page2.MyPanel5.run_page(self)
+        page2.MainFramePanel.run_page(self)
 
 
 
