@@ -1,21 +1,6 @@
 # -*- coding: utf-8 -*-
 import wx
 import wx.xrc
-import sqlite3
-
-
-
-class MainFrame(wx.Frame):
-    def __init__(self, parent):
-        wx.Frame.__init__(self, parent, id=wx.ID_ANY, title=wx.EmptyString, pos=wx.DefaultPosition,
-                          size=wx.Size(500, 500), style=wx.DEFAULT_FRAME_STYLE | wx.TAB_TRAVERSAL)
-
-        self.SetSizeHints(wx.DefaultSize, wx.DefaultSize)
-
-        self.Centre(wx.BOTH)
-
-
-
 
 class MainFramePanel(wx.Panel):
     def __init__(self, parent):
@@ -108,6 +93,15 @@ class MainFramePanel(wx.Panel):
         print(values)
 
         page2.MyPanel5.run_page(self)
+
+class MainFrame(wx.Frame):
+    def __init__(self, parent):
+        wx.Frame.__init__(self, parent, id=wx.ID_ANY, title=wx.EmptyString, pos=wx.DefaultPosition,
+                          size=wx.Size(500, 500), style=wx.DEFAULT_FRAME_STYLE | wx.TAB_TRAVERSAL)
+
+        self.SetSizeHints(wx.DefaultSize, wx.DefaultSize)
+
+        self.Centre(wx.BOTH)
 
 
 app = wx.App()
