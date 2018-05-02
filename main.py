@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 import wx
-import wx.xrc
 
 class MainFramePanel(wx.Panel):
     def __init__(self, parent):
         wx.Panel.__init__(self, parent, id=wx.ID_ANY, pos=wx.DefaultPosition, size=wx.Size(500, 500),
                           style=wx.FULL_REPAINT_ON_RESIZE)
+        self.frame = parent
 
         bSizer1 = wx.BoxSizer(wx.VERTICAL)
 
@@ -56,7 +56,6 @@ class MainFramePanel(wx.Panel):
         fgSizer1.Add(self.inpt_zachetka, 0, wx.ALL, 5)
 
         bSizer1.Add(fgSizer1, 1, wx.EXPAND, 5)
-
         gSizer1 = wx.GridSizer(0, 2, 0, 0)
 
         self.btn_settongs = wx.Button(self, wx.ID_ANY, u"Настройки", wx.DefaultPosition, wx.DefaultSize, 0)
@@ -69,30 +68,47 @@ class MainFramePanel(wx.Panel):
 
         self.SetSizer(bSizer1)
         self.Layout()
-
         self.btn_page2.Bind(wx.EVT_BUTTON, self.go_page2)
 
-    def on_init(self):
-        pass
+    def empty_pole(self):
+        dlg = wx.MessageDialog(self, 'Не все поля заполнены. Заполните все поля перед продолжением', 'Ошибка', wx.OK)
+        val = dlg.ShowModal()
+        if val == wx.ID_OK:
+            dlg.Destroy()
+
 
     def go_page2(self, event):
-        values = []
+        from gui import page2
 
+        values = []
         name = self.inpt_name.GetValue()
-        values.append(name)
+        name = name.replace(' ', '')
+        print(name)
+
         familia = self.inpt_familia.GetValue()
-        values.append(familia)
+        if len(familia) == 0:
+            self.empty_pole()
+            return
 
         group = self.inpt_group.GetValue()
+        if len(group) == 0:
+            self.empty_pole()
+            return
+        zach_number = self.inpt_zachetka.GetValue()
+        zach_number = zach_number.replace(' ', '')
+        if len(zach_number) == 0:
+            self.empty_pole()
+            return
+
+        values.append(name)
+        values.append(familia)
         values.append(group)
 
-        zach_numb = str(self.inpt_zachetka.GetValue())
-
-        variant_num = zach_numb[-2:len(zach_numb)]
-        from gui import page2
         print(values)
-
+        self.frame.Hide()
         page2.MyPanel5.run_page(self)
+
+
 
 class MainFrame(wx.Frame):
     def __init__(self, parent):
@@ -102,10 +118,12 @@ class MainFrame(wx.Frame):
         self.SetSizeHints(wx.DefaultSize, wx.DefaultSize)
 
         self.Centre(wx.BOTH)
+        panel = MainFramePanel(self)
 
 
-app = wx.App()
-frame = MainFrame(None)
-panel = MainFramePanel(frame)
-frame.Show()
-app.MainLoop()
+
+if __name__ == "__main__":
+    app = wx.App(False)
+    frame =  MainFrame(None)
+    frame.Show()
+    app.MainLoop()
