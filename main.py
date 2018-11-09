@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 import wx
+from models import Student, Session
 
+
+new_session = Session()
 class MainFramePanel(wx.Panel):
     def __init__(self, parent):
         wx.Panel.__init__(self, parent, id=wx.ID_ANY, pos=wx.DefaultPosition, size=wx.Size(500, 500),
@@ -100,11 +103,13 @@ class MainFramePanel(wx.Panel):
             self.empty_pole()
             return
 
-        values.append(name)
-        values.append(familia)
-        values.append(group)
+        fio = str(familia) + ' ' + str(name)
 
-        print(values)
+        student = Student(fname=fio, group=group, zach_number=zach_number)
+        new_session.add(student)
+        new_session.commit()
+
+
         self.frame.Hide()
         page2.MainFramePanel.run_page(self)
 
