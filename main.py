@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 import wx
-from models import Student, Session
+from models import Student
+from sqlalchemy import exists
+from base import Session
 
-
-new_session = Session()
 class MainFramePanel(wx.Panel):
     def __init__(self, parent):
         wx.Panel.__init__(self, parent, id=wx.ID_ANY, pos=wx.DefaultPosition, size=wx.Size(500, 500),
@@ -81,12 +81,9 @@ class MainFramePanel(wx.Panel):
 
 
     def go_page2(self, event):
-        from gui import page2
-
-        values = []
         name = self.inpt_name.GetValue()
         name = name.replace(' ', '')
-        print(name)
+
 
         familia = self.inpt_familia.GetValue()
         if len(familia) == 0:
@@ -103,17 +100,16 @@ class MainFramePanel(wx.Panel):
             self.empty_pole()
             return
 
-        fio = str(familia) + ' ' + str(name)
+        fio = str(familia).lower() + ' ' + str(name).lower()
+        new_session = Session()
 
-        student = Student(fname=fio, group=group, zach_number=zach_number)
-        new_session.add(student)
-        new_session.commit()
-
-
-        self.frame.Hide()
-        page2.MainFramePanel.run_page(self)
-
-
+        if new_session.query(exists().where(Student.fname==fio).
+                                where(Student.group==group).where(Student.zach_number==zach_number)).scalar():
+            print("ЗАГРУЖАЮ ВАШЕ ЗАДАНИЕ")
+        else:
+            print("пора занести вас в базу и придумать для вас задание")
+            student = Student(fname=fio, group=group, zach_number=zach_number)
+            new_session.add(student)
 
 class MainFrame(wx.Frame):
     def __init__(self, parent):

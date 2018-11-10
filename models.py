@@ -1,12 +1,6 @@
 from sqlalchemy import Column, Integer, String
-from sqlalchemy.orm import relationship
-from sqlalchemy import create_engine
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
+from base import Base
 
-engine = create_engine("sqlite:////odd-perekrestok.db", echo=True)
-Session = sessionmaker(bind=engine)
-Base = declarative_base()
 
 class Student(Base):
     __tablename__ = 'Student'
