@@ -3,6 +3,11 @@ import wx
 from models import Student
 from sqlalchemy import exists
 from base import Session
+from gui import SecondPage
+
+
+
+
 
 class MainFramePanel(wx.Panel):
     def __init__(self, parent):
@@ -84,7 +89,6 @@ class MainFramePanel(wx.Panel):
         name = self.inpt_name.GetValue()
         name = name.replace(' ', '')
 
-
         familia = self.inpt_familia.GetValue()
         if len(familia) == 0:
             self.empty_pole()
@@ -103,13 +107,16 @@ class MainFramePanel(wx.Panel):
         fio = str(familia).lower() + ' ' + str(name).lower()
         new_session = Session()
 
-        if new_session.query(exists().where(Student.fname==fio).
-                                where(Student.group==group).where(Student.zach_number==zach_number)).scalar():
+        if new_session.query(exists().where(Student.fname == fio).
+                            where(Student.group == group).where(Student.zach_number == zach_number)).scalar():
             print("ЗАГРУЖАЮ ВАШЕ ЗАДАНИЕ")
         else:
             print("пора занести вас в базу и придумать для вас задание")
             student = Student(fname=fio, group=group, zach_number=zach_number)
             new_session.add(student)
+
+        self.frame.Destroy()
+        SecondPage.SecondPage.OnInit(SecondPage)
 
 class MainFrame(wx.Frame):
     def __init__(self, parent):
@@ -120,8 +127,6 @@ class MainFrame(wx.Frame):
 
         self.Centre(wx.BOTH)
         panel = MainFramePanel(self)
-
-
 
 if __name__ == "__main__":
     app = wx.App(False)
