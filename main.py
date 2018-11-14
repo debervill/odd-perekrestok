@@ -114,6 +114,7 @@ class MainFramePanel(wx.Panel):
             print("пора занести вас в базу и придумать для вас задание")
             student = Student(fname=fio, group=group, zach_number=zach_number)
             new_session.add(student)
+            new_session.commit()
 
         self.frame.Destroy()
         SecondPage.SecondPage.OnInit(SecondPage)
