@@ -97,7 +97,7 @@ class SecondPageFrame(wx.Frame):
 		grid_sizer_2.Add(label_16, 0, wx.ALIGN_CENTER_VERTICAL | wx.LEFT | wx.RIGHT, 0)
 		grid_sizer_2.Add(self.text_ctrl_1, 0, wx.ALIGN_CENTER, 0)
 
-		self.bitmap_2 = wx.StaticBitmap(self, wx.ID_ANY, wx.EmptyBitmap(75, 75))
+		self.bitmap_2 = wx.StaticBitmap(self, wx.ID_ANY, wx.Bitmap(75, 75))
 		self.bitmap_2.Hide()
 		grid_sizer_2.Add(self.bitmap_2, 0, wx.ALIGN_CENTER, 0)
 
@@ -206,6 +206,7 @@ class SecondPageFrame(wx.Frame):
 class SecondPage(wx.App):
 	def OnInit(self):
 		self.frame = SecondPageFrame(None, wx.ID_ANY, "")
+		self.frame.Center()
 		self.frame.Show()
 		return True
 

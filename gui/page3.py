@@ -247,6 +247,7 @@ class Page3(wx.App):
 	def OnInit(self):
 		self.frame = Page3Frame(None, wx.ID_ANY, "")
 		self.frame.Show()
+		self.frame.Center()
 		return True
 
 # end of class MyApp

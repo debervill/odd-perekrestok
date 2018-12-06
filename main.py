@@ -128,6 +128,7 @@ class MainFrame(wx.Frame):
 if __name__ == "__main__":
     app = wx.App(False)
     frame =  MainFrame(None)
+    frame.Center()
     frame.Show()
     app.MainLoop()
 
