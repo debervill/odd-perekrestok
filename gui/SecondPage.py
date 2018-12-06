@@ -1,152 +1,199 @@
 import wx
+import random
+
 
 class SeconPageFrame(wx.Frame):
-    def __init__(self, *args, **kwds):
-        # begin wxGlade: SeconPageFrame.__init__
-        kwds["style"] = kwds.get("style", 0) | wx.DEFAULT_FRAME_STYLE
-        wx.Frame.__init__(self, *args, **kwds)
-        self.SetSize((752, 617))
-        self.panel_1 = wx.Panel(self, wx.ID_ANY)
-        self.text_ctrl_1 = wx.TextCtrl(self.panel_1, wx.ID_ANY, "")
-        self.checkbox_shir_dor1 = wx.CheckBox(self.panel_1, wx.ID_ANY, "")
-        self.text_ctrl_2 = wx.TextCtrl(self.panel_1, wx.ID_ANY, "")
-        self.checkbox_shir_dor2 = wx.CheckBox(self.panel_1, wx.ID_ANY, "")
-        self.checkbox_2 = wx.CheckBox(self.panel_1, wx.ID_ANY, "")
-        self.bitmap_button_1 = wx.BitmapButton(self.panel_1, wx.ID_ANY, wx.NullBitmap)
-        self.checkbox_3 = wx.CheckBox(self.panel_1, wx.ID_ANY, "")
-        self.bitmap_button_3 = wx.BitmapButton(self.panel_1, wx.ID_ANY, wx.NullBitmap)
-        self.bitmap_button_2 = wx.BitmapButton(self.panel_1, wx.ID_ANY, wx.NullBitmap)
-        self.btn_next = wx.Button(self.panel_1, wx.ID_ANY, u"\u0414\u0430\u043b\u0435\u0435")
+	def scale_bitmap(self, bitmap, width, height):
+		self.w = width
+		self.h = height
+		image = wx.Image(bitmap)
+		image = image.Scale(self.w, self.h, wx.IMAGE_QUALITY_HIGH)
+		result = wx.Bitmap(image)
+		return result
 
-        self.__set_properties()
-        self.__do_layout()
+	def __init__(self, *args, **kwds):
+		kwds["style"] = kwds.get("style", 0) | wx.DEFAULT_FRAME_STYLE
+		wx.Frame.__init__(self, *args, **kwds)
+		self.SetSize((800, 600))
+		self.radio_btn_2 = wx.RadioButton(self, wx.ID_ANY, u"Крестообразный\n")
+		self.radio_btn_3 = wx.RadioButton(self, wx.ID_ANY, u"Т-образный")
+		self.text_ctrl_1 = wx.TextCtrl(self, wx.ID_ANY, style=wx.TE_PROCESS_ENTER)
+		self.text_ctrl_2 = wx.TextCtrl(self, wx.ID_ANY, style=wx.TE_PROCESS_ENTER)
 
-        self.Bind(wx.EVT_TEXT, self.raschet_shirinu_dor1, self.text_ctrl_1)
-        self.Bind(wx.EVT_TEXT_ENTER, self.raschet_shirinu_dor1, self.text_ctrl_1)
-        self.Bind(wx.EVT_TEXT, self.raschet_shirini_dor2, self.text_ctrl_2)
-        self.Bind(wx.EVT_TEXT_ENTER, self.raschet_shirini_dor2, self.text_ctrl_2)
-        self.Bind(wx.EVT_BUTTON, self.go_next_page, self.btn_next)
-
-    # end wxGlade
-
-    def __set_properties(self):
-        # begin wxGlade: SeconPageFrame.__set_properties
-        self.SetTitle("frame")
-        self.checkbox_shir_dor1.Enable(False)
-        self.checkbox_shir_dor1.Hide()
-        self.text_ctrl_2.SetMinSize((250, 33))
-        self.checkbox_shir_dor2.Enable(False)
-        self.checkbox_shir_dor2.Hide()
-
-    # end wxGlade
-
-    def __do_layout(self):
-        # begin wxGlade: SeconPageFrame.__do_layout
-        sizer_2 = wx.BoxSizer(wx.HORIZONTAL)
-        sizer_3 = wx.BoxSizer(wx.VERTICAL)
-        grid_sizer_3 = wx.GridSizer(0, 4, 0, 0)
-        grid_sizer_2 = wx.GridSizer(0, 3, 0, 0)
-        grid_sizer_1 = wx.GridSizer(2, 4, 0, 0)
-        lbl_name = wx.StaticText(self.panel_1, wx.ID_ANY,
-                                 u"\u0418\u0441\u0445\u043e\u0434\u043d\u044b\u0435 "
-                                 u"\u0434\u0430\u043d\u043d\u044b\u0435 \u0434\u043b\u044f "
-                                 u"\u0440\u0430\u0441\u0447\u0435\u0442\u0430:\n",
-                                 style=wx.ST_ELLIPSIZE_MIDDLE)
-        lbl_name.SetFont(wx.Font(18, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, ""))
-        sizer_3.Add(lbl_name, 0, wx.ALIGN_CENTER, 0)
-        lbl_doroga1_header = wx.StaticText(self.panel_1, wx.ID_ANY,
-                                           u"\u041a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u044f "
-                                           u"\n\u0413\u043e\u0440\u0438\u0437\u043e\u043d\u0442\u0430\u043b\u044c"
-                                           u"\u043d\u043e\u0439 \u0443\u043b\u0438\u0446\u044b")
-        grid_sizer_1.Add(lbl_doroga1_header, 0, wx.FIXED_MINSIZE | wx.TOP, 0)
-        kat_1_dorogi = wx.StaticText(self.panel_1, wx.ID_ANY, "kat_1_dorogi")
-        grid_sizer_1.Add(kat_1_dorogi, 0, wx.FIXED_MINSIZE | wx.TOP, 0)
-        lbl_kat_dor2 = wx.StaticText(self.panel_1, wx.ID_ANY,
-                                     u"\u041a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u044f "
-                                     u"\n\u0412\u0435\u0440\u0442\u0438\u043a\u0430\u043b\u044c\u043d\u043e\u0439 "
-                                     u"\u0443\u043b\u0438\u0446\u044b")
-        grid_sizer_1.Add(lbl_kat_dor2, 0, wx.EXPAND | wx.TOP, 0)
-        kat_dor2 = wx.StaticText(self.panel_1, wx.ID_ANY, "kat_dor2\n")
-        grid_sizer_1.Add(kat_dor2, 0, wx.EXPAND | wx.TOP, 0)
-        lbl_kolvo_polos_dor1 = wx.StaticText(self.panel_1, wx.ID_ANY,
-                                             u"\u041a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u043f\u043e\u043b\u043e\u0441 \n\u0413\u043e\u0440\u0438\u0437\u043e\u043d\u0442\u0430\u043b\u044c\u043d\u043e\u0439 \u0443\u043b\u0438\u0446\u044b")
-        grid_sizer_1.Add(lbl_kolvo_polos_dor1, 0, wx.TOP, 0)
-        kolvo_polos_dor1 = wx.StaticText(self.panel_1, wx.ID_ANY, "kolvo_polos_dor1")
-        grid_sizer_1.Add(kolvo_polos_dor1, 0, wx.FIXED_MINSIZE | wx.TOP, 0)
-        lbl_kolvo_polos_dor2 = wx.StaticText(self.panel_1, wx.ID_ANY,
-                                             u"\u041a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e "
-                                             u"\u043f\u043e\u043b\u043e\u0441\n\u0412\u0435\u0440\u0442\u0438\u043a"
-                                             u"\u0430\u043b\u044c\u043d\u043e\u0439 \u0443\u043b\u0438\u0446\u044b")
-        lbl_kolvo_polos_dor2.SetFont(wx.Font(11, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, ".SF NS Text"))
-        grid_sizer_1.Add(lbl_kolvo_polos_dor2, 0, wx.EXPAND | wx.TOP, 0)
-        kolvo_polos_dor2 = wx.StaticText(self.panel_1, wx.ID_ANY, "kolvo_polos_dor2")
-        grid_sizer_1.Add(kolvo_polos_dor2, 0, wx.EXPAND | wx.TOP, 0)
-        sizer_3.Add(grid_sizer_1, 1, wx.EXPAND, 0)
-        lbl_raschet = wx.StaticText(self.panel_1, wx.ID_ANY,
-                                    u"\u0420\u0430\u0441\u0441\u0447\u0438\u0442\u0430\u0442\u044c:\n")
-        sizer_3.Add(lbl_raschet, 0, wx.EXPAND | wx.TOP, 0)
-        lbl_rasch_dor1 = wx.StaticText(self.panel_1, wx.ID_ANY,
-                                       u"\u0428\u0438\u0440\u0438\u043d\u0443 "
-                                       u"\u043f\u0440\u043e\u0435\u0437\u0436\u0435\u0439 "
-                                       u"\u0447\u0430\u0441\u0442\u0438\n\u0413\u043e\u0440\u0438\u0437\u043e\u043d"
-                                       u"\u0442\u0430\u043b\u044c\u043d\u043e\u0439 \u0443\u043b\u0438\u0446\u044b")
-        grid_sizer_2.Add(lbl_rasch_dor1, 0, wx.EXPAND, 0)
-        grid_sizer_2.Add(self.text_ctrl_1, 0, wx.ALIGN_CENTER | wx.FIXED_MINSIZE, 0)
-        grid_sizer_2.Add(self.checkbox_shir_dor1, 0, wx.EXPAND, 0)
-        lbl_shiria_dor2 = wx.StaticText(self.panel_1, wx.ID_ANY,
-                                        u"\u0428\u0438\u0440\u0438\u043d\u0443 "
-                                        u"\u043f\u0440\u043e\u0435\u0436\u0435\u0439 "
-                                        u"\u0447\u0430\u0441\u0442\u0438\n\u0412\u0435\u0440\u0442\u0438\u043a\u0430"
-                                        u"\u043b\u044c\u043d\u043e\u0439 \u0443\u043b\u0438\u0446\u044b")
-        grid_sizer_2.Add(lbl_shiria_dor2, 0, wx.EXPAND, 0)
-        grid_sizer_2.Add(self.text_ctrl_2, 0, wx.ALIGN_CENTER | wx.FIXED_MINSIZE, 0)
-        grid_sizer_2.Add(self.checkbox_shir_dor2, 0, wx.EXPAND, 0)
-        sizer_3.Add(grid_sizer_2, 1, wx.EXPAND, 0)
-        lbl_type_prekr = wx.StaticText(self.panel_1, wx.ID_ANY,
-                                       u"\u0432\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0442\u0438\u043f "
-                                       u"\n\u043f\u0435\u0440\u0435\u0441\u0435\u0447\u0435\u043d\u0438\u044f\n")
-        grid_sizer_3.Add(lbl_type_prekr, 0, 0, 0)
-        grid_sizer_3.Add((0, 0), 0, 0, 0)
-        grid_sizer_3.Add((0, 0), 0, 0, 0)
-        grid_sizer_3.Add((0, 0), 0, 0, 0)
-        grid_sizer_3.Add(self.checkbox_2, 0, wx.ALIGN_CENTER, 0)
-        grid_sizer_3.Add(self.bitmap_button_1, 0, 0, 0)
-        grid_sizer_3.Add(self.checkbox_3, 0, wx.ALIGN_CENTER, 0)
-        grid_sizer_3.Add(self.bitmap_button_3, 0, 0, 0)
-        sizer_3.Add(grid_sizer_3, 1, wx.EXPAND, 0)
-        sizer_3.Add(self.bitmap_button_2, 0, 0, 0)
-        sizer_3.Add(self.btn_next, 0, wx.ALIGN_RIGHT, 0)
-        self.panel_1.SetSizer(sizer_3)
-        sizer_2.Add(self.panel_1, 1, wx.EXPAND, 0)
-        self.SetSizer(sizer_2)
-        self.Layout()
-
-    # end wxGlade
-
-    def raschet_shirinu_dor1(self, event):  # wxGlade: SeconPageFrame.<event_handler>
-        print("Event handler 'raschet_shirinu_dor1' not implemented!")
-        event.Skip()
-
-    def raschet_shirini_dor2(self, event):  # wxGlade: SeconPageFrame.<event_handler>
-        print("Event handler 'raschet_shirini_dor2' not implemented!")
-        event.Skip()
-
-    def go_next_page(self, event):  # wxGlade: SeconPageFrame.<event_handler>
-        print("Event handler 'go_next_page' not implemented!")
-        event.Skip()
+		self.text_ctrl_1.Bind(wx.EVT_TEXT_ENTER, self.proverka)
+		self.text_ctrl_2.Bind(wx.EVT_TEXT_ENTER, self.proverka)
 
 
-# end of class SeconPageFrame
+		self.__set_properties()
+		self.__do_layout()
+		self.set_kat_dor()
+
+
+
+	def __set_properties(self):
+		self.SetTitle("Расчёт цикла светофорного регулирования")
+
+	def __do_layout(self):
+		sizer_1 = wx.BoxSizer(wx.VERTICAL)
+		grid_sizer_2 = wx.GridSizer(0, 3, 20, 100)
+		grid_sizer_3 = wx.FlexGridSizer(0, 2, 20, 200)
+		grid_sizer_1 = wx.GridSizer(0, 4, 0, 0)
+		btn_sizer = wx.BoxSizer(wx.HORIZONTAL)
+
+		label_6 = wx.StaticText(self, wx.ID_ANY, u"Исходные данные для расчёта:")
+		label_6.SetFont(wx.Font(16, wx.DEFAULT, wx.NORMAL, wx.BOLD, 0, ""))
+		sizer_1.Add(label_6, 0, wx.ALIGN_CENTER_HORIZONTAL, 0)
+
+		label_7 = wx.StaticText(self, wx.ID_ANY, u"Категория \n горизонтальной улицы")
+		grid_sizer_1.Add(label_7, 0, wx.ALIGN_CENTER | wx.ALL, 10)
+
+		self.kat_horizont = wx.StaticText(self, wx.ID_ANY, "", style=wx.ALIGN_CENTER)
+		grid_sizer_1.Add(self.kat_horizont, 0, wx.ALIGN_CENTER, 0)
+
+		label_9 = wx.StaticText(self, wx.ID_ANY, u"Категория \n вертикальной улицы")
+		grid_sizer_1.Add(label_9, 0, wx.ALIGN_CENTER, 0)
+
+		self.kat_vertical = wx.StaticText(self, wx.ID_ANY, "")
+		grid_sizer_1.Add(self.kat_vertical, 0, wx.ALIGN_CENTER, 0)
+
+		label10= wx.StaticText(self, wx.ID_ANY, u"Количество полос \n горизонтальной улицы")
+		grid_sizer_1.Add(label10, 0, wx.ALIGN_CENTER, 0)
+
+		self.kolvo_polosv_horiz = wx.StaticText(self, wx.ID_ANY, "", style=wx.ALIGN_CENTER)
+		grid_sizer_1.Add(self.kolvo_polosv_horiz, 0, wx.ALIGN_CENTER, 0)
+
+		label_13 = wx.StaticText(self, wx.ID_ANY, u"Количество полос \n вертикальной улицы")
+		grid_sizer_1.Add(label_13, 0, wx.ALIGN_CENTER, 0)
+
+		self.kolvo_polosv_vert = wx.StaticText(self, wx.ID_ANY, "")
+		grid_sizer_1.Add(self.kolvo_polosv_vert, 0, wx.ALIGN_CENTER, 0)
+
+		sizer_1.Add(grid_sizer_1, 1, wx.EXPAND, 0)
+		label_18 = wx.StaticText(self, wx.ID_ANY, u"Выберите тип пересечения:")
+		label_18.SetFont(wx.Font(14, wx.DEFAULT, wx.NORMAL, wx.BOLD, 0, ""))
+
+		sizer_1.Add(label_18, 0, wx.ALL, 9)
+		grid_sizer_3.Add(self.radio_btn_2, 0, wx.ALIGN_CENTER_HORIZONTAL, 0)
+		grid_sizer_3.Add(self.radio_btn_3, 0, wx.ALIGN_CENTER_HORIZONTAL, 0)
+
+		img = self.scale_bitmap("/Users/danamir/PycharmProjects/odd-perekrestok/img/perekr-4.jpg", 150, 150)
+		bitmap_4 = wx.StaticBitmap(self, wx.ID_ANY, wx.Bitmap())
+		bitmap_4.SetBitmap(wx.Bitmap(img))
+		grid_sizer_3.Add(bitmap_4, 0, 0, 0)
+
+		img = self.scale_bitmap("/Users/danamir/PycharmProjects/odd-perekrestok/img/perekr-t.jpg", 150, 150)
+		bitmap_5 = wx.StaticBitmap(self, wx.ID_ANY, wx.Bitmap())
+		bitmap_5.SetBitmap(wx.Bitmap(img))
+		grid_sizer_3.Add(bitmap_5, 0, 0, 0)
+
+		sizer_1.Add(grid_sizer_3, 1, wx.CENTER, 0)
+
+		label_15 = wx.StaticText(self, wx.ID_ANY, u"Вам необходимо рассчитать:")
+		label_15.SetFont(wx.Font(14, wx.DEFAULT, wx.NORMAL, wx.BOLD, 0, ""))
+		sizer_1.Add(label_15, 0, 0, 0)
+
+		label_16 = wx.StaticText(self, wx.ID_ANY, u"Ширину проезжей части \n горизонтальной улицы")
+		grid_sizer_2.Add(label_16, 0, wx.ALIGN_CENTER_VERTICAL | wx.LEFT | wx.RIGHT, 0)
+		grid_sizer_2.Add(self.text_ctrl_1, 0, wx.ALIGN_CENTER, 0)
+
+		self.bitmap_2 = wx.StaticBitmap(self, wx.ID_ANY, wx.EmptyBitmap(75, 75))
+		self.bitmap_2.Hide()
+		grid_sizer_2.Add(self.bitmap_2, 0, wx.ALIGN_CENTER, 0)
+
+		label_17 = wx.StaticText(self, wx.ID_ANY, u"Ширину проезжей части \n вертикальной улицы")
+		grid_sizer_2.Add(label_17, 0, 0, 0)
+		grid_sizer_2.Add(self.text_ctrl_2, 0, wx.ALIGN_CENTER, 0)
+
+		self.bitmap_3 = wx.StaticBitmap(self, wx.ID_ANY, wx.Bitmap(75, 75))
+		self.bitmap_3.Hide()
+		grid_sizer_2.Add(self.bitmap_3, 0, 0, 0)
+
+		sizer_1.Add(grid_sizer_2, 1, wx.EXPAND, 0)
+
+
+		self.btn_page3 = wx.Button(self, wx.ID_ANY, u"Далее", wx.DefaultPosition, wx.DefaultSize, 0)
+		btn_sizer.Add(self.btn_page3, 0, wx.ALIGN_BOTTOM | wx.ALIGN_RIGHT | wx.ALL, 5)
+		sizer_1.Add(btn_sizer, 1, wx.EXPAND, 0)
+		self.btn_page3.Bind(wx.EVT_BUTTON, self.go_page3)
+		self.SetSizer(sizer_1)
+		self.Layout()
+
+	def good(self):
+		self.img1 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/good.jpg"
+		self.img4 = self.scale_bitmap(self.img1, 50, 50)
+		self.bitmap_2.SetBitmap(wx.Bitmap(self.img1))
+		self.bitmap_2.Show()
+		self.Refresh()
+
+
+	def bad(self):
+		self.img2 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/error.jpg"
+		self.img3 = self.scale_bitmap(self.img2, 70, 50)
+		self.bitmap_3.SetBitmap(wx.Bitmap(self.img3))
+		self.bitmap_3.Show()
+		self.Refresh()
+
+
+	def set_kat_dor(self):
+		self.kolvo_polosv_vert.SetLabel(str(random.randint(2, 4)))
+		self.kolvo_polosv_horiz.SetLabel(str(random.randint(2, 4)))
+		self.kat_horizont.SetLabel(str(random.randint(2, 4)))
+		self.kat_vertical.SetLabel(str(random.randint(2, 4)))
+
+	def proverka(self, event):
+		print(self.text_ctrl_1.GetValue())
+		print(self.text_ctrl_2.GetValue())
+
+		self.pr_Vert = int(self.kolvo_polosv_horiz.GetLabel()) * 3.75
+		self.pr_hor = int(self.kolvo_polosv_horiz.GetLabel()) * 3.75
+
+		print(self.pr_hor)
+		print(self.pr_Vert)
+
+		if str(self.pr_hor) == self.text_ctrl_1.GetValue():
+			print("good")
+			self.bitmap_2.Hide()
+			self.img1 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/good.jpg"
+			self.img4 = self.scale_bitmap(self.img1, 50, 50)
+			self.bitmap_2.SetBitmap(wx.Bitmap(self.img4))
+			self.bitmap_2.Show()
+			self.Refresh()
+		else:
+			print("bad")
+			self.bitmap_2.Hide()
+			self.img2 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/error.jpg"
+			self.img3 = self.scale_bitmap(self.img2, 70, 50)
+			self.bitmap_2.SetBitmap(wx.Bitmap(self.img3))
+			self.bitmap_2.Show()
+			self.Refresh()
+
+		if str(self.pr_Vert) == self.text_ctrl_2.GetValue() and len(self.text_ctrl_2.GetValue()) > 0:
+			print("good")
+			self.bitmap_3.Hide()
+			self.img1 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/good.jpg"
+			self.img4 = self.scale_bitmap(self.img1, 50, 50)
+			self.bitmap_3.SetBitmap(wx.Bitmap(self.img4))
+			self.bitmap_3.Show()
+			self.Refresh()
+		else:
+			print("Bad")
+			self.bitmap_3.Hide()
+			self.img2 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/error.jpg"
+			self.img3 = self.scale_bitmap(self.img2, 70, 50)
+			self.bitmap_3.SetBitmap(wx.Bitmap(self.img3))
+			self.bitmap_3.Show()
+			self.Refresh()
+
+	def go_page3(self):
+		pass
 
 class SecondPage(wx.App):
-    def OnInit(self):
-        self.frame = SeconPageFrame(None, wx.ID_ANY, "")
-        self.frame.Show()
-        return True
+	def OnInit(self):
+		self.frame = SeconPageFrame(None, wx.ID_ANY, "")
+		self.frame.Show()
+		return True
 
-
-# end of class SecondPage
 
 if __name__ == "__main__":
-    SeconPage = SecondPage(0)
-    SeconPage.MainLoop()
+	SeconPage = SecondPage(0)
+	SeconPage.MainLoop()

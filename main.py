@@ -1,12 +1,9 @@
 # -*- coding: utf-8 -*-
 import wx
-from models import Student
+from db.models import Student
 from sqlalchemy import exists
-from base import Session
+from db.models import Session
 from gui import SecondPage
-
-
-
 
 
 class MainFramePanel(wx.Panel):
@@ -27,7 +24,7 @@ class MainFramePanel(wx.Panel):
         self.lbl_NameProg.Wrap(-1)
         bSizer1.Add(self.lbl_NameProg, 0, wx.ALIGN_CENTER | wx.ALL, 5)
 
-        self.lbl_predstv = wx.StaticText(self, wx.ID_ANY, u"Предстваьтесь", wx.DefaultPosition, wx.DefaultSize, 0)
+        self.lbl_predstv = wx.StaticText(self, wx.ID_ANY, u"Представьтесь:", wx.DefaultPosition, wx.DefaultSize, 0)
         self.lbl_predstv.Wrap(-1)
         bSizer1.Add(self.lbl_predstv, 0, wx.ALL, 5)
 
@@ -84,7 +81,6 @@ class MainFramePanel(wx.Panel):
         if val == wx.ID_OK:
             dlg.Destroy()
 
-
     def go_page2(self, event):
         name = self.inpt_name.GetValue()
         name = name.replace(' ', '')
@@ -115,6 +111,8 @@ class MainFramePanel(wx.Panel):
             student = Student(fname=fio, group=group, zach_number=zach_number)
             new_session.add(student)
             new_session.commit()
+        if fio == 'талыкова ксения':
+            from gui import kotya
 
         self.frame.Destroy()
         SecondPage.SecondPage.OnInit(SecondPage)
@@ -134,3 +132,4 @@ if __name__ == "__main__":
     frame =  MainFrame(None)
     frame.Show()
     app.MainLoop()
+
