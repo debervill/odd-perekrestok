@@ -111,8 +111,6 @@ class MainFramePanel(wx.Panel):
             student = Student(fname=fio, group=group, zach_number=zach_number)
             new_session.add(student)
             new_session.commit()
-        if fio == 'талыкова ксения':
-            from gui import kotya
 
         self.frame.Destroy()
         SecondPage.SecondPage.OnInit(SecondPage)

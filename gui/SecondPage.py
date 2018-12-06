@@ -2,7 +2,7 @@ import wx
 import random
 
 
-class SeconPageFrame(wx.Frame):
+class SecondPageFrame(wx.Frame):
 	def scale_bitmap(self, bitmap, width, height):
 		self.w = width
 		self.h = height
@@ -20,8 +20,9 @@ class SeconPageFrame(wx.Frame):
 		self.text_ctrl_1 = wx.TextCtrl(self, wx.ID_ANY, style=wx.TE_PROCESS_ENTER)
 		self.text_ctrl_2 = wx.TextCtrl(self, wx.ID_ANY, style=wx.TE_PROCESS_ENTER)
 
-		self.text_ctrl_1.Bind(wx.EVT_TEXT_ENTER, self.proverka)
-		self.text_ctrl_2.Bind(wx.EVT_TEXT_ENTER, self.proverka)
+		self.text_ctrl_1.Bind(wx.EVT_TEXT_ENTER, self.proverka_vvoda)
+		self.text_ctrl_2.Bind(wx.EVT_TEXT_ENTER, self.proverka_vvoda)
+		self.radio_btn_2.SetValue(True)
 
 
 		self.__set_properties()
@@ -140,56 +141,71 @@ class SeconPageFrame(wx.Frame):
 		self.kat_horizont.SetLabel(str(random.randint(2, 4)))
 		self.kat_vertical.SetLabel(str(random.randint(2, 4)))
 
-	def proverka(self, event):
-		print(self.text_ctrl_1.GetValue())
-		print(self.text_ctrl_2.GetValue())
-
+	def proverka_vvoda(self, event):
 		self.pr_Vert = int(self.kolvo_polosv_horiz.GetLabel()) * 3.75
 		self.pr_hor = int(self.kolvo_polosv_horiz.GetLabel()) * 3.75
 
 		print(self.pr_hor)
 		print(self.pr_Vert)
+		if len(self.text_ctrl_1.GetValue()) > 0:
+			if str(self.pr_hor) == self.text_ctrl_1.GetValue():
+				print("good")
+				self.bitmap_2.Hide()
+				self.img1 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/good.jpg"
+				self.img4 = self.scale_bitmap(self.img1, 50, 50)
+				self.bitmap_2.SetBitmap(wx.Bitmap(self.img4))
+				self.bitmap_2.Show()
+				self.Refresh()
+			else:
+				print("bad")
+				self.bitmap_2.Hide()
+				self.img2 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/error.jpg"
+				self.img3 = self.scale_bitmap(self.img2, 70, 50)
+				self.bitmap_2.SetBitmap(wx.Bitmap(self.img3))
+				self.bitmap_2.Show()
+				self.text_ctrl_1.SetValue(str(self.pr_hor))
+				self.Refresh()
 
-		if str(self.pr_hor) == self.text_ctrl_1.GetValue():
-			print("good")
-			self.bitmap_2.Hide()
-			self.img1 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/good.jpg"
-			self.img4 = self.scale_bitmap(self.img1, 50, 50)
-			self.bitmap_2.SetBitmap(wx.Bitmap(self.img4))
-			self.bitmap_2.Show()
-			self.Refresh()
-		else:
-			print("bad")
-			self.bitmap_2.Hide()
-			self.img2 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/error.jpg"
-			self.img3 = self.scale_bitmap(self.img2, 70, 50)
-			self.bitmap_2.SetBitmap(wx.Bitmap(self.img3))
-			self.bitmap_2.Show()
-			self.Refresh()
+		if len(self.text_ctrl_2.GetValue()) > 0:
+			if str(self.pr_Vert) == self.text_ctrl_2.GetValue() and len(self.text_ctrl_2.GetValue()) > 0:
+				print("good")
+				self.bitmap_3.Hide()
+				self.img1 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/good.jpg"
+				self.img4 = self.scale_bitmap(self.img1, 50, 50)
+				self.bitmap_3.SetBitmap(wx.Bitmap(self.img4))
+				self.bitmap_3.Show()
+				self.Refresh()
+			else:
+				print("Bad")
+				self.bitmap_3.Hide()
+				self.img2 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/error.jpg"
+				self.img3 = self.scale_bitmap(self.img2, 70, 50)
+				self.bitmap_3.SetBitmap(wx.Bitmap(self.img3))
+				self.bitmap_3.Show()
+				self.text_ctrl_2.SetValue(str(self.pr_Vert))
+				self.Refresh()
 
-		if str(self.pr_Vert) == self.text_ctrl_2.GetValue() and len(self.text_ctrl_2.GetValue()) > 0:
-			print("good")
-			self.bitmap_3.Hide()
-			self.img1 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/good.jpg"
-			self.img4 = self.scale_bitmap(self.img1, 50, 50)
-			self.bitmap_3.SetBitmap(wx.Bitmap(self.img4))
-			self.bitmap_3.Show()
-			self.Refresh()
-		else:
-			print("Bad")
-			self.bitmap_3.Hide()
-			self.img2 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/error.jpg"
-			self.img3 = self.scale_bitmap(self.img2, 70, 50)
-			self.bitmap_3.SetBitmap(wx.Bitmap(self.img3))
-			self.bitmap_3.Show()
-			self.Refresh()
 
-	def go_page3(self):
-		pass
+
+	def proverka_radiobtn(self):
+		self.s  = 1
+		print(self.radio_btn_2.GetValue())
+		print(self.radio_btn_3.GetValue())
+		if self.radio_btn_2.GetValue() == self.radio_btn_2.GetValue():
+			self.error_radio_btn()
+			self.s = 0
+		return self.s
+
+
+	def go_page3(self, event):
+		from gui import page3
+		page3.Page3.OnInit(page3)
+		self.Destroy()
+
 
 class SecondPage(wx.App):
 	def OnInit(self):
-		self.frame = SeconPageFrame(None, wx.ID_ANY, "")
+		self.frame = SecondPageFrame(None, wx.ID_ANY, "")
 		self.frame.Show()
 		return True
 
