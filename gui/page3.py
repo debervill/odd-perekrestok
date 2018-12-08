@@ -50,6 +50,7 @@ class Page3Frame(wx.Frame):
 		self.text_ctrl_12 = wx.TextCtrl(self.panel_1, wx.ID_ANY, style=wx.TE_PROCESS_ENTER)
 		self.text_ctrl_12.Bind(wx.EVT_TEXT_ENTER, self.proverka_vvoda12)
 		self.btn_page4 = wx.Button(self, wx.ID_ANY, u"\u0414\u0430\u043b\u0435\u0435")
+		self.btn_page4.Bind(wx.EVT_BUTTON, self.gopage4)
 
 
 		self.__do_layout()
@@ -334,7 +335,7 @@ class Page3Frame(wx.Frame):
 		self.label_17.SetLabel("N11 = " + str(self.data[1][0]) + "=")
 		self.label_18.SetLabel("N12 = " + str(self.data[2][0]) + "=")
 		self.label_19.SetLabel("N1 прямо = " + str(self.data[0][1]) + "-" + str(self.data[1][1]) + "-" + str(self.data[2][1])  + "=")
-		
+
 		self.label_20.SetLabel("N2 =" + str(self.data[3][0]) + "=")
 		self.label_21.SetLabel("N21 =" + str(self.data[4][0]) + "=")
 		self.label_22.SetLabel("N22 =" + str(self.data[5][0]) + "=")
@@ -418,8 +419,12 @@ class Page3Frame(wx.Frame):
 		if len(self.text_ctrl_4.GetValue()) > 0:
 			self.s = float(self.data[0][1]) - float(self.data[1][1])  - float(self.data[2][1])
 			self.s1 = "%.2f" % self.s
+			self.file = open("123", "a")
+			self.file.writelines(self.s1)
+			self.file.close()
 			
 			if self.text_ctrl_4.GetValue() == str(self.s1):
+
 				print("good")
 				print( str(float(self.data[0][1]) - float(self.data[1][1]) - float(self.data[2][1])))
 				
@@ -611,6 +616,10 @@ class Page3Frame(wx.Frame):
 				self.bitmap_2.Show()
 				self.text_ctrl_1.SetValue(str(self.s1))
 				self.Refresh()
+	def gopage4(self, event):
+		from gui import page4
+		page4.MyApp.OnInit(page4)
+		self.Destroy()
 
 
 class Page3(wx.App):

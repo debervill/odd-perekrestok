@@ -149,6 +149,10 @@ class SecondPageFrame(wx.Frame):
 		print(self.pr_Vert)
 		if len(self.text_ctrl_1.GetValue()) > 0:
 			if str(self.pr_hor) == self.text_ctrl_1.GetValue():
+				self.file = open("123", "w").close()
+				self.file = open("123", "w")
+				self.file.writelines(self.text_ctrl_1.GetValue()+"\n")
+				self.file.close()
 				print("good")
 				self.bitmap_2.Hide()
 				self.img1 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/good.jpg"
