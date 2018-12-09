@@ -10,7 +10,7 @@ class SeconPageFrame(wx.Frame):
         wx.Frame.__init__(self, *args, **kwds)
         self.SetSize((658, 331))
         self.panel_1 = wx.Panel(self, wx.ID_ANY)
-        self.color = "white"
+
         self.panel_1.SetBackgroundColour(self.color)
         self.radio_btn_2 = wx.RadioButton(self.panel_1, wx.ID_ANY, u"Крестообразный")
         self.radio_btn_3 = wx.RadioButton(self.panel_1, wx.ID_ANY, u"Т-образный")
@@ -47,33 +47,38 @@ class SeconPageFrame(wx.Frame):
         label_1 = wx.StaticText(self.panel_1, wx.ID_ANY, u"Исходные данные для расчета")
         label_1.SetFont(wx.Font(18, wx.DEFAULT, wx.NORMAL, wx.BOLD, 0, ""))
         sizer_2.Add(label_1, 0, wx.ALIGN_CENTER | wx.ALL, 10)
+
         label_7 = wx.StaticText(self.panel_1, wx.ID_ANY, u"Категория \n Горизональной улицы")
         grid_sizer_1.Add(label_7, 0, wx.ALIGN_CENTER | wx.ALL, 10)
-        label_8 = wx.StaticText(self.panel_1, wx.ID_ANY, "", style=wx.ALIGN_CENTER)
-        grid_sizer_1.Add(label_8, 0, wx.ALIGN_CENTER, 0)
+        self.katHorizont = wx.StaticText(self.panel_1, wx.ID_ANY, "", style=wx.ALIGN_CENTER)
+        grid_sizer_1.Add(self.katHorizont, 0, wx.ALIGN_CENTER, 0)
+
         label_9 = wx.StaticText(self.panel_1, wx.ID_ANY, u"Категория \n Вертикальной улицы")
         grid_sizer_1.Add(label_9, 0, wx.ALIGN_CENTER, 0)
-        label_10 = wx.StaticText(self.panel_1, wx.ID_ANY, "")
-        grid_sizer_1.Add(label_10, 0, wx.ALIGN_CENTER, 0)
+        self.katVertical = wx.StaticText(self.panel_1, wx.ID_ANY, "")
+        grid_sizer_1.Add(self.katVertical, 0, wx.ALIGN_CENTER, 0)
+
         label_11 = wx.StaticText(self.panel_1, wx.ID_ANY, u"Количество полос \n Горизонтальной улицы")
         grid_sizer_1.Add(label_11, 0, wx.ALIGN_CENTER, 0)
-        label_12 = wx.StaticText(self.panel_1, wx.ID_ANY, "", style=wx.ALIGN_CENTER)
-        grid_sizer_1.Add(label_12, 0, wx.ALIGN_CENTER, 0)
+        self.kolvoPolosHorizont = wx.StaticText(self.panel_1, wx.ID_ANY, "", style=wx.ALIGN_CENTER)
+        grid_sizer_1.Add(self.kolvoPolosHorizont, 0, wx.ALIGN_CENTER, 0)
+
         label_13 = wx.StaticText(self.panel_1, wx.ID_ANY, u"Количество полос \n Вертикальной улицы")
         grid_sizer_1.Add(label_13, 0, wx.ALIGN_CENTER, 0)
-        label_14 = wx.StaticText(self.panel_1, wx.ID_ANY, "")
-        grid_sizer_1.Add(label_14, 0, wx.ALIGN_CENTER, 0)
+        self.kolvoPolosVert = wx.StaticText(self.panel_1, wx.ID_ANY, "")
+        grid_sizer_1.Add(self.kolvoPolosVert, 0, wx.ALIGN_CENTER, 0)
         sizer_2.Add(grid_sizer_1, 1, wx.EXPAND, 0)
+
         label_18 = wx.StaticText(self.panel_1, wx.ID_ANY, u"Выберите тип пересечения")
         label_18.SetFont(wx.Font(14, wx.DEFAULT, wx.NORMAL, wx.BOLD, 0, ""))
         sizer_2.Add(label_18, 0, wx.ALL, 9)
         grid_sizer_3.Add(self.radio_btn_2, 0, wx.ALIGN_CENTER_HORIZONTAL, 0)
         grid_sizer_3.Add(self.radio_btn_3, 0, wx.ALIGN_CENTER_HORIZONTAL, 0)
 
-        self.bitmap_4 = wx.StaticBitmap(self.panel_1, wx.ID_ANY, wx.Bitmap("/Users/danamir/PycharmProjects/odd-perekrestok/img/perekr-4.jpg", wx.BITMAP_TYPE_ANY))
+        self.bitmap_4 = wx.StaticBitmap(self.panel_1, wx.ID_ANY, wx.Bitmap(100,100,  wx.BITMAP_TYPE_ANY))
         grid_sizer_3.Add(self.bitmap_4, 0, 0, 0)
 
-        self.bitmap_5 = wx.StaticBitmap(self.panel_1, wx.ID_ANY, wx.Bitmap("/Users/danamir/PycharmProjects/odd-perekrestok/img/perekr-t.png", wx.BITMAP_TYPE_ANY))
+        self.bitmap_5 = wx.StaticBitmap(self.panel_1, wx.ID_ANY, wx.Bitmap(100, 100, wx.BITMAP_TYPE_ANY))
         grid_sizer_3.Add(self.bitmap_5, 0, 0, 0)
         sizer_2.Add(grid_sizer_3, 1, wx.EXPAND, 0)
 
@@ -84,7 +89,7 @@ class SeconPageFrame(wx.Frame):
         grid_sizer_2.Add(label_16, 0, wx.ALIGN_CENTER_VERTICAL | wx.LEFT | wx.RIGHT, 0)
         grid_sizer_2.Add(self.text_ctrl_1, 0, wx.ALIGN_CENTER, 0)
 
-        bitmap_2 = wx.StaticBitmap(self.panel_1, wx.ID_ANY, wx.Bitmap("/Users/danamir/PycharmProjects/odd-perekrestok/img/123.jpg", wx.BITMAP_TYPE_ANY))
+        bitmap_2 = wx.StaticBitmap(self.panel_1, wx.ID_ANY, wx.Bitmap(100, 100, wx.BITMAP_TYPE_ANY))
         bitmap_2.Hide()
         grid_sizer_2.Add(bitmap_2, 0, 0, 0)
 
@@ -92,7 +97,7 @@ class SeconPageFrame(wx.Frame):
         grid_sizer_2.Add(label_17, 0, 0, 0)
         grid_sizer_2.Add(self.text_ctrl_2, 0, wx.ALIGN_CENTER, 0)
 
-        bitmap_3 = wx.StaticBitmap(self.panel_1, wx.ID_ANY, wx.Bitmap("/Users/danamir/PycharmProjects/odd-perekrestok/img/123.jpg", wx.BITMAP_TYPE_ANY))
+        bitmap_3 = wx.StaticBitmap(self.panel_1, wx.ID_ANY, wx.Bitmap(100, 100, wx.BITMAP_TYPE_ANY))
         grid_sizer_2.Add(bitmap_3, 0, 0, 0)
         sizer_2.Add(grid_sizer_2, 1, wx.EXPAND, 0)
 
@@ -116,14 +121,14 @@ class SeconPageFrame(wx.Frame):
         self.Refresh()
 
     def set_kat_dor(self):
-        self.kolvo_polosv_vert.SetLabel(str(random.randint(2, 4)))
-        self.kolvo_polosv_horiz.SetLabel(str(random.randint(2, 4)))
-        self.kat_horizont.SetLabel(str(random.randint(2, 4)))
-        self.kat_vertical.SetLabel(str(random.randint(2, 4)))
+        self.kolvoPolosVert.SetLabel(str(random.randint(2, 4)))
+        self.kolvoPolosHorizont.SetLabel(str(random.randint(2, 4)))
+        self.katHorizont.SetLabel(str(random.randint(2, 4)))
+        self.katVertical.SetLabel(str(random.randint(2, 4)))
 
     def proverka_vvoda(self, event):
-        self.pr_Vert = int(self.kolvo_polosv_horiz.GetLabel()) * 3.75
-        self.pr_hor = int(self.kolvo_polosv_horiz.GetLabel()) * 3.75
+        self.pr_Vert = int(self.kolvoPolosHorizont.GetLabel()) * 3.75
+        self.pr_hor = int(self.kolvoPolosHorizont.GetLabel()) * 3.75
 
         print(self.pr_hor)
         print(self.pr_Vert)
@@ -186,7 +191,6 @@ class SeconPageFrame(wx.Frame):
 class SecondPage(wx.App):
     def OnInit(self):
         self.frame = SeconPageFrame(None, wx.ID_ANY, "")
-        self.SetTopWindow(self.frame)
         self.frame.Show()
         return True
 

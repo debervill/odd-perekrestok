@@ -1,87 +1,91 @@
-# -*- coding: utf-8 -*-
+# -*- coding: UTF-8 -*-
+
 import wx
+import controller
 from db.models import Student
 from sqlalchemy import exists
 from db.models import Session
 from gui import SecondPage
 
+class MyFrame(wx.Frame):
+    def __init__(self, *args, **kwds):
+        # begin wxGlade: MyFrame.__init__
+        kwds["style"] = kwds.get("style", 0) | wx.DEFAULT_FRAME_STYLE
+        wx.Frame.__init__(self, *args, **kwds)
+        self.panel_1 = wx.Panel(self, wx.ID_ANY)
+        self.inpt_name = wx.TextCtrl(self.panel_1, wx.ID_ANY, "")
+        self.inpt_familia = wx.TextCtrl(self.panel_1, wx.ID_ANY, "")
+        self.inpt_group = wx.TextCtrl(self.panel_1, wx.ID_ANY, "")
+        self.inpt_zachetka = wx.TextCtrl(self.panel_1, wx.ID_ANY, "")
+        self.btn2 = wx.Button(self.panel_1, wx.ID_ANY, u"\u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438")
+        self.button_1 = wx.Button(self.panel_1, wx.ID_ANY, u"\u0414\u0430\u043b\u0435\u0435")
 
-class MainFramePanel(wx.Panel):
-    def __init__(self, parent):
-        # todo Изменить цвет панели на белый
-        wx.Panel.__init__(self, parent, id=wx.ID_ANY, pos=wx.DefaultPosition, size=wx.Size(500, 500),
-                          style=wx.FULL_REPAINT_ON_RESIZE)
-        self.frame = parent
+        self.__set_properties()
+        self.__do_layout()
+        # end wxGlade
 
-        bSizer1 = wx.BoxSizer(wx.VERTICAL)
+    def __set_properties(self):
+        # begin wxGlade: MyFrame.__set_properties
+        self.SetTitle("Расчет цикла свеетофорного регулирования: Приветственая")
+        self.inpt_name.SetFont(wx.Font(12, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, ""))
+        self.inpt_familia.SetFont(wx.Font(12, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, ""))
+        self.inpt_zachetka.SetFont(wx.Font(12, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, ""))
+        self.btn2.SetMinSize((100, 50))
+        self.button_1.SetMinSize((100, 50))
+        self.frameSize = controller.setSize()
+        self.SetSize(self.frameSize)
+        self.SetMinSize((800, 600))
+        self.color = controller.setBacgroundColor()
+        self.panel_1.SetBackgroundColour(self.color)
 
-        self.lbl_kaf = wx.StaticText(self, wx.ID_ANY, u"Кафедра «Организация и безопасность движения»",
-                                     wx.DefaultPosition, wx.DefaultSize, 0)
-        self.lbl_kaf.Wrap(-1)
-        bSizer1.Add(self.lbl_kaf, 0, wx.ALIGN_CENTER | wx.ALL, 5)
+        # end wxGlade
 
-        self.lbl_NameProg = wx.StaticText(self, wx.ID_ANY, u"Расчёт цикла светофорного регулирования на перекрёстке",
-                                          wx.DefaultPosition, wx.DefaultSize, 0)
-        self.lbl_NameProg.Wrap(-1)
-        bSizer1.Add(self.lbl_NameProg, 0, wx.ALIGN_CENTER | wx.ALL, 5)
-
-        self.lbl_predstv = wx.StaticText(self, wx.ID_ANY, u"Представьтесь:", wx.DefaultPosition, wx.DefaultSize, 0)
-        self.lbl_predstv.Wrap(-1)
-        bSizer1.Add(self.lbl_predstv, 0, wx.ALL, 5)
-
-        fgSizer1 = wx.FlexGridSizer(0, 2, 0, 0)
-        fgSizer1.SetFlexibleDirection(wx.BOTH)
-        fgSizer1.SetNonFlexibleGrowMode(wx.FLEX_GROWMODE_SPECIFIED)
-
-        self.lbl_name = wx.StaticText(self, wx.ID_ANY, u"Имя", wx.DefaultPosition, wx.DefaultSize, 0)
-        self.lbl_name.Wrap(-1)
-        fgSizer1.Add(self.lbl_name, 0, wx.ALL, 5)
-
-        self.inpt_name = wx.TextCtrl(self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0)
-        fgSizer1.Add(self.inpt_name, 0, wx.ALL, 5)
-
-        self.lbl_familia = wx.StaticText(self, wx.ID_ANY, u"Фамилия", wx.DefaultPosition, wx.DefaultSize, 0)
-        self.lbl_familia.Wrap(-1)
-        fgSizer1.Add(self.lbl_familia, 0, wx.ALL, 5)
-
-        self.inpt_familia = wx.TextCtrl(self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0)
-        fgSizer1.Add(self.inpt_familia, 0, wx.ALL, 5)
-
-        self.lbl_group = wx.StaticText(self, wx.ID_ANY, u"Группа", wx.DefaultPosition, wx.DefaultSize, 0)
-        self.lbl_group.Wrap(-1)
-        fgSizer1.Add(self.lbl_group, 0, wx.ALL, 5)
-
-        self.inpt_group = wx.TextCtrl(self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0)
-        fgSizer1.Add(self.inpt_group, 0, wx.ALL, 5)
-
-        self.lbl_zachetka = wx.StaticText(self, wx.ID_ANY, u"№ Зачётной книжки", wx.DefaultPosition, wx.DefaultSize, 0)
-        self.lbl_zachetka.Wrap(-1)
-        fgSizer1.Add(self.lbl_zachetka, 0, wx.ALL, 5)
-
-        self.inpt_zachetka = wx.TextCtrl(self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0)
-        fgSizer1.Add(self.inpt_zachetka, 0, wx.ALL, 5)
-
-        bSizer1.Add(fgSizer1, 1, wx.EXPAND, 5)
-        gSizer1 = wx.GridSizer(0, 2, 0, 0)
-
-        self.btn_settongs = wx.Button(self, wx.ID_ANY, u"Настройки", wx.DefaultPosition, wx.DefaultSize, 0)
-        gSizer1.Add(self.btn_settongs, 0, wx.ALIGN_BOTTOM | wx.ALL, 5)
-
-        self.btn_page2 = wx.Button(self, wx.ID_ANY, u"Далее", wx.DefaultPosition, wx.DefaultSize, 0)
-        gSizer1.Add(self.btn_page2, 0, wx.ALIGN_BOTTOM | wx.ALIGN_RIGHT | wx.ALL, 5)
-
-        bSizer1.Add(gSizer1, 1, wx.EXPAND, 5)
-
-        self.SetSizer(bSizer1)
+    def __do_layout(self):
+        # begin wxGlade: MyFrame.__do_layout
+        sizer_1 = wx.BoxSizer(wx.VERTICAL)
+        sizer_2 = wx.StaticBoxSizer(wx.StaticBox(self.panel_1, wx.ID_ANY, ""), wx.VERTICAL)
+        grid_sizer_2 = wx.GridSizer(0, 2, 0, 0)
+        grid_sizer_1 = wx.GridSizer(0, 2, 0, 0)
+        label_1 = wx.StaticText(self.panel_1, wx.ID_ANY, u"\u041a\u0430\u0444\u0435\u0434\u0440\u0430 \"\u041e\u0440\u0433\u0430\u043d\u0438\u0437\u0430\u0446\u0438\u044f \u0438  \u0431\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u044c \u0434\u0432\u0438\u0436\u0435\u043d\u0438\u044f\"")
+        label_1.SetFont(wx.Font(14, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, ""))
+        sizer_2.Add(label_1, 0, wx.ALIGN_CENTER | wx.BOTTOM | wx.LEFT | wx.RIGHT, 20)
+        label_2 = wx.StaticText(self.panel_1, wx.ID_ANY, u"\u0420\u0430\u0441\u0447\u0435\u0442 \u0446\u0438\u043a\u043b\u0430 \u0441\u0432\u0435\u0442\u043e\u0444\u043e\u0440\u043d\u043e\u0433\u043e \u0440\u0435\u0433\u0443\u043b\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u044f \u043d\u0430 \u043f\u0435\u0440\u0435\u043a\u0440\u0435\u0441\u0442\u043a\u0435")
+        label_2.SetFont(wx.Font(12, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, ""))
+        sizer_2.Add(label_2, 0, wx.ALIGN_CENTER, 0)
+        label_3 = wx.StaticText(self.panel_1, wx.ID_ANY, u"\u041f\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u044c\u0442\u0435\u0441\u044c")
+        label_3.SetFont(wx.Font(12, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, ""))
+        sizer_2.Add(label_3, 0, wx.ALL, 5)
+        label_4 = wx.StaticText(self.panel_1, wx.ID_ANY, u"\u0418\u043c\u044f")
+        label_4.SetFont(wx.Font(12, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, ""))
+        grid_sizer_1.Add(label_4, 0, wx.ALIGN_CENTER, 0)
+        grid_sizer_1.Add(self.inpt_name, 0, wx.ALIGN_CENTER, 0)
+        inpt_familia1 = wx.StaticText(self.panel_1, wx.ID_ANY, u"\u0424\u0430\u043c\u0438\u043b\u0438\u044f")
+        inpt_familia1.SetFont(wx.Font(12, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, ""))
+        grid_sizer_1.Add(inpt_familia1, 0, wx.ALIGN_CENTER, 0)
+        grid_sizer_1.Add(self.inpt_familia, 0, wx.ALIGN_CENTER, 0)
+        label_5 = wx.StaticText(self.panel_1, wx.ID_ANY, u"\u0413\u0440\u0443\u043f\u043f\u0430")
+        label_5.SetFont(wx.Font(12, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, ""))
+        grid_sizer_1.Add(label_5, 0, wx.ALIGN_CENTER, 0)
+        grid_sizer_1.Add(self.inpt_group, 0, wx.ALIGN_CENTER, 0)
+        label_6 = wx.StaticText(self.panel_1, wx.ID_ANY, u"\u2116 \u0417\u0430\u0447\u0435\u0442\u043d\u043e\u0439 \u043a\u043d\u0438\u0436\u043a\u0438")
+        label_6.SetFont(wx.Font(12, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, ""))
+        grid_sizer_1.Add(label_6, 0, wx.ALIGN_CENTER, 0)
+        grid_sizer_1.Add(self.inpt_zachetka, 0, wx.ALIGN_CENTER, 0)
+        sizer_2.Add(grid_sizer_1, 1, wx.EXPAND, 0)
+        grid_sizer_2.Add(self.btn2, 0, wx.ALIGN_BOTTOM, 0)
+        grid_sizer_2.Add(self.button_1, 0, wx.ALIGN_BOTTOM | wx.ALIGN_RIGHT, 0)
+        sizer_2.Add(grid_sizer_2, 1, wx.EXPAND, 0)
+        self.panel_1.SetSizer(sizer_2)
+        sizer_1.Add(self.panel_1, 1, wx.EXPAND, 0)
+        self.SetSizer(sizer_1)
         self.Layout()
-        self.btn_page2.Bind(wx.EVT_BUTTON, self.go_page2)
+        # end wxGlade
 
     def empty_pole(self):
         dlg = wx.MessageDialog(self, 'Не все поля заполнены. Заполните все поля перед продолжением', 'Ошибка', wx.OK)
         val = dlg.ShowModal()
         if val == wx.ID_OK:
             dlg.Destroy()
-
     def go_page2(self, event):
 
         name = self.inpt_name.GetValue()
@@ -114,23 +118,21 @@ class MainFramePanel(wx.Panel):
             new_session.add(student)
             new_session.commit()
 
+
         self.frame.Destroy()
         SecondPage.SecondPage.OnInit(SecondPage)
 
-class MainFrame(wx.Frame):
-    def __init__(self, parent):
-        wx.Frame.__init__(self, parent, id=wx.ID_ANY, title=wx.EmptyString, pos=wx.DefaultPosition,
-                          size=wx.Size(500, 500), style=wx.DEFAULT_FRAME_STYLE | wx.TAB_TRAVERSAL)
+    # todo Перенести весь функционал из main.py
 
-        self.SetSizeHints(wx.DefaultSize, wx.DefaultSize)
+class MyApp(wx.App):
+    def OnInit(self):
+        self.frame = MyFrame(None, wx.ID_ANY, "")
+        self.frame.Center()
+        self.frame.Show()
+        return True
 
-        self.Centre(wx.BOTH)
-        panel = MainFramePanel(self)
+# end of class MyApp
 
 if __name__ == "__main__":
-    app = wx.App(False)
-    frame =  MainFrame(None)
-    frame.Center()
-    frame.Show()
+    app = MyApp(0)
     app.MainLoop()
-

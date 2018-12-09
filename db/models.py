@@ -3,7 +3,8 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-engine = create_engine("sqlite:///odd.db", echo=True)
+path = "C:\\Users\\danamir\\PycharmProjects\\odd-perekrestok\\db\\odd.db"
+engine = create_engine("sqlite:///C:\\Users\\danamir\\PycharmProjects\\odd-perekrestok\\db\\odd.db", echo=True)
 Session = sessionmaker(bind=engine)
 Base = declarative_base(engine)
 meta = Base.metadata
@@ -29,9 +30,9 @@ class KatDorogi(Base):
     __tablename__ = 'KatDor'
     id = Column(Integer, primary_key=True, autoincrement=True)
     kategoria = Column("kategoria", Integer)
-    minshirinapolosu = Column("Min Shirina Polosu", Float(Precision=16))
-    maxshirinapolosu = Column("Max Shirina Polosu", Float(Precision=16))
-    shirinaobochinu = Column("Shirian Obochinu", Float(Precision=16))
+    minshirinapolosu = Column("Min Shirina Polosu", Float)
+    maxshirinapolosu = Column("Max Shirina Polosu", Float)
+    shirinaobochinu = Column("Shirian Obochinu", Float)
     maxpivedinetns = Column("Max Prived Intens", Integer)
 
     def __init__(self, kategoria, minshirinapolosu, maxshirinapolosu, shirinaobochinu, maxpivedinetns):
@@ -45,35 +46,19 @@ class KatDorogi(Base):
         return "KatDor(kategoria=%s, minshirinapolosu=%s, maxshirinapolosu=%s, shirinaobochinu=%s, maxpivedinetns=%s)" % \
                (self.kategoria, self.minshirinapolosu, self.maxshirinapolosu, self.shirinaobochinu, self.maxpivedinetns)
 
-class Zadanie():
-    __tablename__ = 'KatDor'
+
+class Zadanie(Base):
+    __tablename__ = 'Zadanie'
     id = Column(Integer, primary_key=True, autoincrement=True)
-    N1 = Column("N1", Float(Precision=16))
-    N11 = Column("N11", Float(Precision=16))
-    N12 = Column("N11", Float(Precision=16))
-    N13 = Column("N11", Float(Precision=16))
-    N1p = Column("N11", Float(Precision=16))
-    N2 = Column("N11", Float(Precision=16))
-    N21 = Column("N11", Float(Precision=16))
-    N22 = Column("N11", Float(Precision=16))
-    N23 = Column("N11", Float(Precision=16))
-    N2p = Column("N11", Float(Precision=16))
-    N3 = Column("N11", Float(Precision=16))
-    N31 = Column("N11", Float(Precision=16))
-    N32 = Column("N11", Float(Precision=16))
-    N33 = Column("N11", Float(Precision=16))
-    N3p = Column("N11", Float(Precision=16))
-    N4 = Column("N11", Float(Precision=16))
-    N41 = Column("N11", Float(Precision=16))
-    N42 = Column("N11", Float(Precision=16))
-    N43 = Column("N11", Float(Precision=16))
-    N4p = Column("N11", Float(Precision=16))
-    
-    def __init__(self, n1, n11, n12, n13):
-        self.n1 = n1
-        self.n11 = n11
-        self.n12 = n12
-        self.n13 = n13
+    N1 = Column("n1", Float)
+
+    def __init__(self,n1):
+        self.n1 =  n1
+
+    def __repr__(self):
+        return "Zadanie(n1=%s)" %(self.n1)
+
+
         
         
         
