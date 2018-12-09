@@ -119,7 +119,7 @@ class Page3Frame(wx.Frame):
 		grid_sizer_2.Add(self.label_26, (3, 2), (1, 1), 0, 0)
 		grid_sizer_2.Add(self.text_ctrl_1, (3, 3), (1, 1), 0, 0)
 		
-		self.bitmap_1 = wx.StaticBitmap(self.panel_1, wx.ID_ANY, wx.Bitmap("/Users/danamir/PycharmProjects/odd-perekrestok/img/good.jpg", wx.BITMAP_TYPE_ANY))
+		self.bitmap_1 = wx.StaticBitmap(self.panel_1, wx.ID_ANY, wx.Bitmap("/Users/danamir/PycharmProjects/odd-perekrestok/img/123.jpg", wx.BITMAP_TYPE_ANY))
 		self.bitmap_1.SetMinSize((35, 35))
 		
 		grid_sizer_2.Add(self.bitmap_1, (3, 4), (1, 1), 0, 0)
@@ -131,7 +131,7 @@ class Page3Frame(wx.Frame):
 		grid_sizer_2.Add(self.label_28, (4, 2), (1, 1), 0, 0)
 		grid_sizer_2.Add(self.text_ctrl_2, (4, 3), (1, 1), 0, 0)
 		
-		self.bitmap_2 = wx.StaticBitmap(self.panel_1, wx.ID_ANY, wx.Bitmap("/Users/danamir/PycharmProjects/odd-perekrestok/img/good.jpg", wx.BITMAP_TYPE_ANY))
+		self.bitmap_2 = wx.StaticBitmap(self.panel_1, wx.ID_ANY, wx.Bitmap("/Users/danamir/PycharmProjects/odd-perekrestok/img/123.jpg", wx.BITMAP_TYPE_ANY))
 		self.bitmap_2.SetMinSize((35, 35))
 		grid_sizer_2.Add(self.bitmap_2, (4, 4), (1, 1), 0, 0)
 		
@@ -143,7 +143,7 @@ class Page3Frame(wx.Frame):
 		grid_sizer_2.Add(self.label_32, (5, 2), (1, 1), 0, 0)
 		grid_sizer_2.Add(self.text_ctrl_3, (5, 3), (1, 1), 0, 0)
 		
-		self.bitmap_3 = wx.StaticBitmap(self.panel_1, wx.ID_ANY, wx.Bitmap("/Users/danamir/PycharmProjects/odd-perekrestok/img/good.jpg", wx.BITMAP_TYPE_ANY))
+		self.bitmap_3 = wx.StaticBitmap(self.panel_1, wx.ID_ANY, wx.Bitmap("/Users/danamir/PycharmProjects/odd-perekrestok/img/123.jpg", wx.BITMAP_TYPE_ANY))
 		self.bitmap_3.SetMinSize((35, 35))
 		grid_sizer_2.Add(self.bitmap_3, (5, 4), (1, 1), 0, 0)
 		
@@ -154,7 +154,7 @@ class Page3Frame(wx.Frame):
 		self.label_30 = wx.StaticText(self.panel_1, wx.ID_ANY, "")
 		grid_sizer_2.Add(self.label_30, (6, 2), (1, 1), 0, 0)
 		grid_sizer_2.Add(self.text_ctrl_4, (6, 3), (1, 1), 0, 0)
-		self.bitmap_4 = wx.StaticBitmap(self.panel_1, wx.ID_ANY, wx.Bitmap("/Users/danamir/PycharmProjects/odd-perekrestok/img/good.jpg", wx.BITMAP_TYPE_ANY))
+		self.bitmap_4 = wx.StaticBitmap(self.panel_1, wx.ID_ANY, wx.Bitmap("/Users/danamir/PycharmProjects/odd-perekrestok/img/123.jpg", wx.BITMAP_TYPE_ANY))
 		self.bitmap_4.SetMinSize((35, 35))
 		grid_sizer_2.Add(self.bitmap_4, (6, 4), (1, 1), 0, 0)
 		
@@ -165,7 +165,7 @@ class Page3Frame(wx.Frame):
 		self.label_34 = wx.StaticText(self.panel_1, wx.ID_ANY, "")
 		grid_sizer_2.Add(self.label_34, (7, 2), (1, 1), 0, 0)
 		grid_sizer_2.Add(self.text_ctrl_5, (7, 3), (1, 1), 0, 0)
-		self.bitmap_5 = wx.StaticBitmap(self.panel_1, wx.ID_ANY, wx.Bitmap("/Users/danamir/PycharmProjects/odd-perekrestok/img/good.jpg", wx.BITMAP_TYPE_ANY))
+		self.bitmap_5 = wx.StaticBitmap(self.panel_1, wx.ID_ANY, wx.Bitmap("/Users/danamir/PycharmProjects/odd-perekrestok/img/123.jpg", wx.BITMAP_TYPE_ANY))
 		self.bitmap_5.SetMinSize((35, 35))
 		
 		grid_sizer_2.Add(self.bitmap_5, (7, 4), (1, 1), 0, 0)
@@ -176,7 +176,7 @@ class Page3Frame(wx.Frame):
 		self.label_36 = wx.StaticText(self.panel_1, wx.ID_ANY, "")
 		grid_sizer_2.Add(self.label_36, (8, 2), (1, 1), 0, 0)
 		grid_sizer_2.Add(self.text_ctrl_6, (8, 3), (1, 1), 0, 0)
-		self.bitmap_6 = wx.StaticBitmap(self.panel_1, wx.ID_ANY, wx.Bitmap("/Users/danamir/PycharmProjects/odd-perekrestok/img/good.jpg", wx.BITMAP_TYPE_ANY))
+		self.bitmap_6 = wx.StaticBitmap(self.panel_1, wx.ID_ANY, wx.Bitmap("/Users/danamir/PycharmProjects/odd-perekrestok/img/123.jpg", wx.BITMAP_TYPE_ANY))
 		self.bitmap_6.SetMinSize((35, 35))
 		grid_sizer_2.Add(self.bitmap_6, (8, 4), (1, 1), 0, 0)
 		
@@ -187,7 +187,7 @@ class Page3Frame(wx.Frame):
 		self.label_38 = wx.StaticText(self.panel_1, wx.ID_ANY, "")
 		grid_sizer_2.Add(self.label_38, (9, 2), (1, 1), 0, 0)
 		grid_sizer_2.Add(self.text_ctrl_7, (9, 3), (1, 1), 0, 0)
-		self.bitmap_7 = wx.StaticBitmap(self.panel_1, wx.ID_ANY, wx.Bitmap("/Users/danamir/PycharmProjects/odd-perekrestok/img/good.jpg", wx.BITMAP_TYPE_ANY))
+		self.bitmap_7 = wx.StaticBitmap(self.panel_1, wx.ID_ANY, wx.Bitmap("/Users/danamir/PycharmProjects/odd-perekrestok/img/123.jpg", wx.BITMAP_TYPE_ANY))
 		self.bitmap_7.SetMinSize((35, 35))
 		grid_sizer_2.Add(self.bitmap_7, (9, 4), (1, 1), 0, 0)
 		self.label_23 = wx.StaticText(self.panel_1, wx.ID_ANY, u"N2(\u043f\u0440\u044f\u043c\u043e) =")
@@ -197,7 +197,7 @@ class Page3Frame(wx.Frame):
 		self.label_40 = wx.StaticText(self.panel_1, wx.ID_ANY, "")
 		grid_sizer_2.Add(self.label_40, (10, 2), (1, 1), 0, 0)
 		grid_sizer_2.Add(self.text_ctrl_8, (10, 3), (1, 1), 0, 0)
-		self.bitmap_8 = wx.StaticBitmap(self.panel_1, wx.ID_ANY, wx.Bitmap("/Users/danamir/PycharmProjects/odd-perekrestok/img/good.jpg", wx.BITMAP_TYPE_ANY))
+		self.bitmap_8 = wx.StaticBitmap(self.panel_1, wx.ID_ANY, wx.Bitmap("/Users/danamir/PycharmProjects/odd-perekrestok/img/123.jpg", wx.BITMAP_TYPE_ANY))
 		self.bitmap_8.SetMinSize((35, 35))
 		grid_sizer_2.Add(self.bitmap_8, (10, 4), (1, 1), 0, 0)
 		
@@ -208,28 +208,28 @@ class Page3Frame(wx.Frame):
 		self.label_42 = wx.StaticText(self.panel_1, wx.ID_ANY, "")
 		grid_sizer_2.Add(self.label_42, (11, 2), (1, 1), 0, 0)
 		grid_sizer_2.Add(self.text_ctrl_9, (11, 3), (1, 1), 0, 0)
-		self.bitmap_9 = wx.StaticBitmap(self.panel_1, wx.ID_ANY, wx.Bitmap("/Users/danamir/PycharmProjects/odd-perekrestok/img/good.jpg", wx.BITMAP_TYPE_ANY))
+		self.bitmap_9 = wx.StaticBitmap(self.panel_1, wx.ID_ANY, wx.Bitmap("/Users/danamir/PycharmProjects/odd-perekrestok/img/123.jpg", wx.BITMAP_TYPE_ANY))
 		self.bitmap_9.SetMinSize((35, 35))
 		grid_sizer_2.Add(self.bitmap_9, (11, 4), (1, 1), 0, 0)
 		
 		self.label_100 = wx.StaticText(self.panel_1, wx.ID_ANY, "N31 =")
 		grid_sizer_2.Add(self.label_100, (12, 0), (1, 1), 0, 0)
 		grid_sizer_2.Add(self.text_ctrl_10, (12, 3), (1, 1), 0, 0)
-		self.bitmap_10 = wx.StaticBitmap(self.panel_1, wx.ID_ANY, wx.Bitmap("/Users/danamir/PycharmProjects/odd-perekrestok/img/good.jpg", wx.BITMAP_TYPE_ANY))
+		self.bitmap_10 = wx.StaticBitmap(self.panel_1, wx.ID_ANY, wx.Bitmap("/Users/danamir/PycharmProjects/odd-perekrestok/img/123.jpg", wx.BITMAP_TYPE_ANY))
 		self.bitmap_10.SetMinSize((35, 35))
 		grid_sizer_2.Add(self.bitmap_10, (12, 4), (1, 1), 0, 0)
 		
 		self.label_101 = wx.StaticText(self.panel_1, wx.ID_ANY, "N32 =")
 		grid_sizer_2.Add(self.label_101, (13, 0), (1, 1), 0, 0)
 		grid_sizer_2.Add(self.text_ctrl_11, (13, 3), (1, 1), 0, 0)
-		self.bitmap_11 = wx.StaticBitmap(self.panel_1, wx.ID_ANY, wx.Bitmap("/Users/danamir/PycharmProjects/odd-perekrestok/img/good.jpg", wx.BITMAP_TYPE_ANY))
+		self.bitmap_11 = wx.StaticBitmap(self.panel_1, wx.ID_ANY, wx.Bitmap("/Users/danamir/PycharmProjects/odd-perekrestok/img/123.jpg", wx.BITMAP_TYPE_ANY))
 		self.bitmap_11.SetMinSize((35, 35))
 		grid_sizer_2.Add(self.bitmap_11, (13, 4), (1, 1), 0, 0)
 		
 		self.label_102 = wx.StaticText(self.panel_1, wx.ID_ANY, "N3 прямо =")
 		grid_sizer_2.Add(self.label_102, (14, 0), (1, 1), 0, 0)
 		grid_sizer_2.Add(self.text_ctrl_12, (14, 3), (1, 1), 0, 0)
-		self.bitmap_12 = wx.StaticBitmap(self.panel_1, wx.ID_ANY, wx.Bitmap("/Users/danamir/PycharmProjects/odd-perekrestok/img/good.jpg", wx.BITMAP_TYPE_ANY))
+		self.bitmap_12 = wx.StaticBitmap(self.panel_1, wx.ID_ANY, wx.Bitmap("/Users/danamir/PycharmProjects/odd-perekrestok/img/123.jpg", wx.BITMAP_TYPE_ANY))
 		self.bitmap_12.SetMinSize((35, 35))
 		grid_sizer_2.Add(self.bitmap_12, (14, 4), (1, 1), 0, 0)
 		
@@ -357,7 +357,7 @@ class Page3Frame(wx.Frame):
 			if self.text_ctrl_1.GetValue() == str(self.data[0][1]):
 				print("good")
 				
-				self.img1 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/good.jpg"
+				self.img1 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/123.jpg"
 				self.img4 = self.scale_bitmap(self.img1, 20, 20)
 				self.bitmap_1.SetBitmap(wx.Bitmap(self.img4))
 				self.bitmap_1.Show()
@@ -365,7 +365,7 @@ class Page3Frame(wx.Frame):
 			else:
 				print("bad")
 				
-				self.img2 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/error.jpg"
+				self.img2 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/bad.jpg"
 				self.img3 = self.scale_bitmap(self.img2, 25, 25)
 				self.bitmap_1.SetBitmap(wx.Bitmap(self.img3))
 				self.bitmap_1.Show()
@@ -378,7 +378,7 @@ class Page3Frame(wx.Frame):
 			if self.text_ctrl_2.GetValue() == str(self.data[1][1]):
 				print("good")
 				
-				self.img1 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/good.jpg"
+				self.img1 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/123.jpg"
 				self.img4 = self.scale_bitmap(self.img1, 20, 20)
 				self.bitmap_2.SetBitmap(wx.Bitmap(self.img4))
 				self.bitmap_2.Show()
@@ -386,7 +386,7 @@ class Page3Frame(wx.Frame):
 			else:
 				print("bad")
 				
-				self.img2 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/error.jpg"
+				self.img2 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/bad.jpg"
 				self.img3 = self.scale_bitmap(self.img2, 25, 25)
 				self.bitmap_2.SetBitmap(wx.Bitmap(self.img3))
 				self.bitmap_2.Show()
@@ -399,7 +399,7 @@ class Page3Frame(wx.Frame):
 			if self.text_ctrl_3.GetValue() == str(self.data[2][1]):
 				print("good")
 				
-				self.img1 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/good.jpg"
+				self.img1 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/123.jpg"
 				self.img4 = self.scale_bitmap(self.img1, 20, 20)
 				self.bitmap_3.SetBitmap(wx.Bitmap(self.img4))
 				self.bitmap_3.Show()
@@ -407,7 +407,7 @@ class Page3Frame(wx.Frame):
 			else:
 				print("bad")
 				
-				self.img2 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/error.jpg"
+				self.img2 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/bad.jpg"
 				self.img3 = self.scale_bitmap(self.img2, 25, 25)
 				self.bitmap_3.SetBitmap(wx.Bitmap(self.img3))
 				self.bitmap_3.Show()
@@ -428,7 +428,7 @@ class Page3Frame(wx.Frame):
 				print("good")
 				print( str(float(self.data[0][1]) - float(self.data[1][1]) - float(self.data[2][1])))
 				
-				self.img1 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/good.jpg"
+				self.img1 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/123.jpg"
 				self.img4 = self.scale_bitmap(self.img1, 20, 20)
 				self.bitmap_4.SetBitmap(wx.Bitmap(self.img4))
 				self.bitmap_4.Show()
@@ -436,7 +436,7 @@ class Page3Frame(wx.Frame):
 			else:
 				print("bad")
 			
-				self.img2 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/error.jpg"
+				self.img2 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/bad.jpg"
 				self.img3 = self.scale_bitmap(self.img2, 25, 25)
 				self.bitmap_4.SetBitmap(wx.Bitmap(self.img3))
 				self.bitmap_4.Show()
@@ -451,7 +451,7 @@ class Page3Frame(wx.Frame):
 			if self.text_ctrl_5.GetValue() == str(self.data[4][1]):
 				print("good")
 				
-				self.img1 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/good.jpg"
+				self.img1 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/123.jpg"
 				self.img4 = self.scale_bitmap(self.img1, 20, 20)
 				self.bitmap_5.SetBitmap(wx.Bitmap(self.img4))
 				self.bitmap_5.Show()
@@ -459,7 +459,7 @@ class Page3Frame(wx.Frame):
 			else:
 				print("bad")
 				
-				self.img2 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/error.jpg"
+				self.img2 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/bad.jpg"
 				self.img3 = self.scale_bitmap(self.img2, 25, 25)
 				self.bitmap_5.SetBitmap(wx.Bitmap(self.img3))
 				self.bitmap_5.Show()
@@ -472,7 +472,7 @@ class Page3Frame(wx.Frame):
 			if self.text_ctrl_6.GetValue() == str(self.data[5][1]):
 				print("good")
 			
-				self.img1 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/good.jpg"
+				self.img1 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/123.jpg"
 				self.img4 = self.scale_bitmap(self.img1, 20, 20)
 				self.bitmap_6.SetBitmap(wx.Bitmap(self.img4))
 				self.bitmap_6.Show()
@@ -480,7 +480,7 @@ class Page3Frame(wx.Frame):
 			else:
 				print("bad")
 			
-				self.img2 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/error.jpg"
+				self.img2 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/bad.jpg"
 				self.img3 = self.scale_bitmap(self.img2, 25, 25)
 				self.bitmap_6.SetBitmap(wx.Bitmap(self.img3))
 				self.bitmap_6.Show()
@@ -493,7 +493,7 @@ class Page3Frame(wx.Frame):
 			if self.text_ctrl_7.GetValue() == str(self.data[6][1]):
 				print("good")
 				
-				self.img1 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/good.jpg"
+				self.img1 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/123.jpg"
 				self.img4 = self.scale_bitmap(self.img1, 20, 20)
 				self.bitmap_7.SetBitmap(wx.Bitmap(self.img4))
 				self.bitmap_7.Show()
@@ -501,7 +501,7 @@ class Page3Frame(wx.Frame):
 			else:
 				print("bad")
 				
-				self.img2 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/error.jpg"
+				self.img2 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/bad.jpg"
 				self.img3 = self.scale_bitmap(self.img2, 25, 25)
 				self.bitmap_7.SetBitmap(wx.Bitmap(self.img3))
 				self.bitmap_7.Show()
@@ -517,7 +517,7 @@ class Page3Frame(wx.Frame):
 			if self.text_ctrl_8.GetValue() == str(self.s1):
 				print("good")
 				
-				self.img1 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/good.jpg"
+				self.img1 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/123.jpg"
 				self.img4 = self.scale_bitmap(self.img1, 20, 20)
 				self.bitmap_8.SetBitmap(wx.Bitmap(self.img4))
 				self.bitmap_8.Show()
@@ -526,7 +526,7 @@ class Page3Frame(wx.Frame):
 				print("bad")
 				self.s = float(self.data[3][1]) - float(self.data[4][1])- float(self.data[5][1])
 				self.s1 = "%.2f" % self.s
-				self.img2 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/error.jpg"
+				self.img2 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/bad.jpg"
 				self.img3 = self.scale_bitmap(self.img2, 25, 25)
 				self.bitmap_8.SetBitmap(wx.Bitmap(self.img3))
 				self.bitmap_8.Show()
@@ -539,7 +539,7 @@ class Page3Frame(wx.Frame):
 			if self.text_ctrl_9.GetValue() == str(self.data[8][1]):
 				print("good")
 				
-				self.img1 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/good.jpg"
+				self.img1 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/123.jpg"
 				self.img4 = self.scale_bitmap(self.img1, 20, 20)
 				self.bitmap_9.SetBitmap(wx.Bitmap(self.img4))
 				self.bitmap_9.Show()
@@ -547,7 +547,7 @@ class Page3Frame(wx.Frame):
 			else:
 				print("bad")
 				
-				self.img2 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/error.jpg"
+				self.img2 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/bad.jpg"
 				self.img3 = self.scale_bitmap(self.img2, 25, 25)
 				self.bitmap_9.SetBitmap(wx.Bitmap(self.img3))
 				self.bitmap_9.Show()
@@ -559,7 +559,7 @@ class Page3Frame(wx.Frame):
 		if len(self.text_ctrl_10.GetValue()) > 0:
 			if self.text_ctrl_10.GetValue() == str(self.data[9][1]):
 				print("good")
-				self.img1 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/good.jpg"
+				self.img1 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/123.jpg"
 				self.img4 = self.scale_bitmap(self.img1, 20, 20)
 				self.bitmap_10.SetBitmap(wx.Bitmap(self.img4))
 				self.bitmap_10.Show()
@@ -567,7 +567,7 @@ class Page3Frame(wx.Frame):
 			else:
 				print("bad")
 				1
-				self.img2 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/error.jpg"
+				self.img2 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/bad.jpg"
 				self.img3 = self.scale_bitmap(self.img2, 25, 25)
 				self.bitmap_10.SetBitmap(wx.Bitmap(self.img3))
 				self.bitmap_10.Show()
@@ -579,14 +579,14 @@ class Page3Frame(wx.Frame):
 		if len(self.text_ctrl_11.GetValue()) > 0:
 			if self.text_ctrl_11.GetValue() == str(self.data[10][1]):
 				print("good")
-				self.img1 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/good.jpg"
+				self.img1 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/123.jpg"
 				self.img4 = self.scale_bitmap(self.img1, 20, 20)
 				self.bitmap_11.SetBitmap(wx.Bitmap(self.img4))
 				self.bitmap_11.Show()
 				self.Refresh()
 			else:
 				print("bad")
-				self.img2 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/error.jpg"
+				self.img2 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/bad.jpg"
 				self.img3 = self.scale_bitmap(self.img2, 25, 25)
 				self.bitmap_11.SetBitmap(wx.Bitmap(self.img3))
 				self.bitmap_11.Show()
@@ -601,7 +601,7 @@ class Page3Frame(wx.Frame):
 			if self.text_ctrl_1.GetValue() == str(self.s1):
 				print("good")
 				self.bitmap_1.Hide()
-				self.img1 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/good.jpg"
+				self.img1 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/123.jpg"
 				self.img4 = self.scale_bitmap(self.img1, 20, 20)
 				self.bitmap_2.SetBitmap(wx.Bitmap(self.img4))
 				self.bitmap_2.Show()
@@ -610,7 +610,7 @@ class Page3Frame(wx.Frame):
 				print("bad")
 				self.s = float(self.data[7][1]) - float(self.data[8][1]) - float(self.data[9][1])
 				self.s1 = "%.2f" % self.s  
-				self.img2 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/error.jpg"
+				self.img2 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/bad.jpg"
 				self.img3 = self.scale_bitmap(self.img2, 25, 25)
 				self.bitmap_2.SetBitmap(wx.Bitmap(self.img3))
 				self.bitmap_2.Show()

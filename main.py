@@ -8,6 +8,7 @@ from gui import SecondPage
 
 class MainFramePanel(wx.Panel):
     def __init__(self, parent):
+        # todo Изменить цвет панели на белый
         wx.Panel.__init__(self, parent, id=wx.ID_ANY, pos=wx.DefaultPosition, size=wx.Size(500, 500),
                           style=wx.FULL_REPAINT_ON_RESIZE)
         self.frame = parent
@@ -82,6 +83,7 @@ class MainFramePanel(wx.Panel):
             dlg.Destroy()
 
     def go_page2(self, event):
+
         name = self.inpt_name.GetValue()
         name = name.replace(' ', '')
 
