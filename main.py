@@ -12,13 +12,14 @@ class MyFrame(wx.Frame):
         # begin wxGlade: MyFrame.__init__
         kwds["style"] = kwds.get("style", 0) | wx.DEFAULT_FRAME_STYLE
         wx.Frame.__init__(self, *args, **kwds)
-        self.panel_1 = wx.Panel(self, wx.ID_ANY)
+        self.panel_1 = wx.Panel(self, wx.ID_ANY, size=(100, 100))
         self.inpt_name = wx.TextCtrl(self.panel_1, wx.ID_ANY, "")
         self.inpt_familia = wx.TextCtrl(self.panel_1, wx.ID_ANY, "")
         self.inpt_group = wx.TextCtrl(self.panel_1, wx.ID_ANY, "")
         self.inpt_zachetka = wx.TextCtrl(self.panel_1, wx.ID_ANY, "")
         self.btn2 = wx.Button(self.panel_1, wx.ID_ANY, u"\u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438")
         self.button_1 = wx.Button(self.panel_1, wx.ID_ANY, u"\u0414\u0430\u043b\u0435\u0435")
+        
 
         self.__set_properties()
         self.__do_layout()
@@ -30,16 +31,19 @@ class MyFrame(wx.Frame):
         self.inpt_name.SetFont(wx.Font(12, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, ""))
         self.inpt_familia.SetFont(wx.Font(12, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, ""))
         self.inpt_zachetka.SetFont(wx.Font(12, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, ""))
+        
+        self.framesize = controller.setFrameSize()
+        print(self.framesize)
         self.btn2.SetMinSize((100, 50))
         self.button_1.SetMinSize((100, 50))
-        self.frameSize = controller.setSize()
-        self.SetSize(self.frameSize)
-        self.SetMinSize((800, 600))
+   
         self.color = controller.setBacgroundColor()
         self.panel_1.SetBackgroundColour(self.color)
+        
+        self.button_1.SetBackgroundColour(controller.setBckgroundButtonColor())
+      
 
-        # end wxGlade
-
+        
     def __do_layout(self):
         # begin wxGlade: MyFrame.__do_layout
         sizer_1 = wx.BoxSizer(wx.VERTICAL)

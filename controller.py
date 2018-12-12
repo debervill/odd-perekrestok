@@ -2,12 +2,19 @@ import os
 import tkinter as tk
 import wx
 
+def hex_to_rgb(value):
+    value = value.lstrip('#')
+    lv = len(value)
+    return tuple(int(value[i:i + lv // 3], 16) for i in range(0, lv, lv // 3))
+
 def setBacgroundColor():
     """
     Устанавливает цвет панели для приложения
     :return:
     """
-    color  = "white"
+    hex_color = "#DBF0B2"
+    color =hex_to_rgb(hex_color)
+    
     return color
 
 def setBckgroundButtonColor():
@@ -16,17 +23,18 @@ def setBckgroundButtonColor():
     Устанавливает цвет кнопок
     :return:
     """
-    wx.lib.colourdb.updateColourDB()
-    color = wx.NamedColour("light coral")
-    return color
+    hex_color = "#F8B8B8"
+    color = hex_to_rgb(hex_color)
 
+    return color
+    
 def getFullPath(file):
     put = os.getcwd()
     path = str(put) + '\\' + file
     return path
 
 
-def setSize():
+def setFrameSize():
     """
     :parameter sh,sw - ширина и высота экрана, на котором
     запускается программа
@@ -35,9 +43,9 @@ def setSize():
     root = tk.Tk()
     sw = root.winfo_screenwidth()
     sh = root.winfo_screenheight()
-    w = int(0.75 * sw)
-    h = int(0.75 * sh)
+    w,h = int(0.75 * sw),  int(0.75 * sh)
 
     if w < 800 and h < 600:
         w, h = 800, 600
+        
     return w, h
