@@ -1,6 +1,7 @@
 import wx
 import random
 import os
+import controller
 
 
 class SeconPageFrame(wx.Frame):
@@ -36,6 +37,11 @@ class SeconPageFrame(wx.Frame):
     def __set_properties(self):
         # begin wxGlade: SeconPageFrame.__set_properties
         self.SetTitle("Расчет цикла светофорного регулирования")
+
+        self.color = controller.setBacgroundColor()
+        self.SetBackgroundColour(self.color)
+        self.btnColor = controller.setBckgroundButtonColor()
+        self.btn2.SetBackgroundColour(self.btnColor)
 
     def __do_layout(self):
         # begin wxGlade: SeconPageFrame.__do_layout

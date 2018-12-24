@@ -2,9 +2,11 @@ from sqlalchemy import Column, Integer, String, Float
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
+import os
 
-path = "C:\\Users\\danamir\\PycharmProjects\\odd-perekrestok\\db\\odd.db"
-engine = create_engine("sqlite:///C:\\Users\\danamir\\PycharmProjects\\odd-perekrestok\\db\\odd.db", echo=True)
+path_db = os.path.abspath("db/odd.db")
+path = "sqlite:////" + path_db
+engine = create_engine(path, echo=True)
 Session = sessionmaker(bind=engine)
 Base = declarative_base(engine)
 meta = Base.metadata

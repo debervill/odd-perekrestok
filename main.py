@@ -6,6 +6,9 @@ from db.models import Student
 from sqlalchemy import exists
 from db.models import Session
 from gui import SecondPage
+import tkinter as tk
+import sys
+
 
 class MyFrame(wx.Frame):
     def __init__(self, *args, **kwds):
@@ -19,10 +22,13 @@ class MyFrame(wx.Frame):
         self.inpt_zachetka = wx.TextCtrl(self.panel_1, wx.ID_ANY, "")
         self.btn2 = wx.Button(self.panel_1, wx.ID_ANY, u"\u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438")
         self.button_1 = wx.Button(self.panel_1, wx.ID_ANY, u"\u0414\u0430\u043b\u0435\u0435")
-        
+        self.size = self.SetSize(600, 600)
 
         self.__set_properties()
         self.__do_layout()
+        self.__binds()
+
+
         # end wxGlade
 
     def __set_properties(self):
@@ -31,19 +37,17 @@ class MyFrame(wx.Frame):
         self.inpt_name.SetFont(wx.Font(12, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, ""))
         self.inpt_familia.SetFont(wx.Font(12, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, ""))
         self.inpt_zachetka.SetFont(wx.Font(12, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, ""))
-        
-        self.framesize = controller.setFrameSize()
-        print(self.framesize)
-        self.btn2.SetMinSize((100, 50))
-        self.button_1.SetMinSize((100, 50))
-   
-        self.color = controller.setBacgroundColor()
-        self.panel_1.SetBackgroundColour(self.color)
-        
-        self.button_1.SetBackgroundColour(controller.setBckgroundButtonColor())
-      
 
-        
+        self.color = controller.setBacgroundColor()
+        self.SetBackgroundColour(self.color)
+        self.btnColor = controller.setBckgroundButtonColor()
+        self.btn2.SetBackgroundColour(self.btnColor)
+
+
+
+
+
+
     def __do_layout(self):
         # begin wxGlade: MyFrame.__do_layout
         sizer_1 = wx.BoxSizer(wx.VERTICAL)
@@ -85,11 +89,22 @@ class MyFrame(wx.Frame):
         self.Layout()
         # end wxGlade
 
+    def __binds(self):
+        self.button_1.Bind(wx.EVT_BUTTON, self.go_page2)
+
+    def getSize(self):
+        app = wx.App(False)
+        sw, sh = wx.GetDisplaySize()
+        self.w = 0.75 * sw
+        self.h = 0.75 * sh
+        return self.w, self.h
+
     def empty_pole(self):
         dlg = wx.MessageDialog(self, 'Не все поля заполнены. Заполните все поля перед продолжением', 'Ошибка', wx.OK)
         val = dlg.ShowModal()
         if val == wx.ID_OK:
             dlg.Destroy()
+
     def go_page2(self, event):
 
         name = self.inpt_name.GetValue()
@@ -123,8 +138,8 @@ class MyFrame(wx.Frame):
             new_session.commit()
 
 
-        self.frame.Destroy()
         SecondPage.SecondPage.OnInit(SecondPage)
+        self.Destroy()
 
     # todo Перенести весь функционал из main.py
 
@@ -138,5 +153,9 @@ class MyApp(wx.App):
 # end of class MyApp
 
 if __name__ == "__main__":
+
     app = MyApp(0)
+    import wx.lib.inspection
+
+    wx.lib.inspection.InspectionTool().Show()
     app.MainLoop()
