@@ -1,11 +1,17 @@
+
 from sqlalchemy import Column, Integer, String, Float
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 import os
-
+import platform
 path_db = os.path.abspath("db/odd.db")
-path = "sqlite:////" + path_db
+
+if platform.system() == "Windows":
+    path = "sqlite:///" + path_db
+else:
+    path = "sqlite:////" + path_db
+
 engine = create_engine(path, echo=True)
 Session = sessionmaker(bind=engine)
 Base = declarative_base(engine)
@@ -61,13 +67,6 @@ class Zadanie(Base):
         return "Zadanie(n1=%s)" %(self.n1)
 
 
-        
-        
-        
-        
-    
-   
-    
 meta.create_all(engine)
 
 

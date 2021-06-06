@@ -9,14 +9,14 @@ class SeconPageFrame(wx.Frame):
         # begin wxGlade: SeconPageFrame.__init__
         kwds["style"] = kwds.get("style", 0) | wx.DEFAULT_FRAME_STYLE
         wx.Frame.__init__(self, *args, **kwds)
-        self.SetSize((658, 331))
+        self.SetSize((800, 600))
         self.panel_1 = wx.Panel(self, wx.ID_ANY)
 
-        self.panel_1.SetBackgroundColour(self.color)
+        #self.panel_1.SetBackgroundColour(self.color)
         self.radio_btn_2 = wx.RadioButton(self.panel_1, wx.ID_ANY, u"Крестообразный")
         self.radio_btn_3 = wx.RadioButton(self.panel_1, wx.ID_ANY, u"Т-образный")
-        self.text_ctrl_1 = wx.TextCtrl(self.panel_1, wx.ID_ANY, "")
-        self.text_ctrl_2 = wx.TextCtrl(self.panel_1, wx.ID_ANY, "")
+        self.text_ctrl_1 = wx.TextCtrl(self.panel_1, wx.ID_ANY, "", style = wx.TE_PROCESS_ENTER)
+        self.text_ctrl_2 = wx.TextCtrl(self.panel_1, wx.ID_ANY, "", style = wx.TE_PROCESS_ENTER)
 
         self.text_ctrl_1.Bind(wx.EVT_TEXT_ENTER, self.proverka_vvoda)
         self.text_ctrl_2.Bind(wx.EVT_TEXT_ENTER, self.proverka_vvoda)
@@ -41,7 +41,7 @@ class SeconPageFrame(wx.Frame):
         self.color = controller.setBacgroundColor()
         self.SetBackgroundColour(self.color)
         self.btnColor = controller.setBckgroundButtonColor()
-        self.btn2.SetBackgroundColour(self.btnColor)
+        #self.btn2.SetBackgroundColour(self.btnColor)
 
     def __do_layout(self):
         # begin wxGlade: SeconPageFrame.__do_layout
@@ -81,8 +81,12 @@ class SeconPageFrame(wx.Frame):
         grid_sizer_3.Add(self.radio_btn_2, 0, wx.ALIGN_CENTER_HORIZONTAL, 0)
         grid_sizer_3.Add(self.radio_btn_3, 0, wx.ALIGN_CENTER_HORIZONTAL, 0)
 
-        self.bitmap_4 = wx.StaticBitmap(self.panel_1, wx.ID_ANY, wx.Bitmap(100,100,  wx.BITMAP_TYPE_ANY))
-        grid_sizer_3.Add(self.bitmap_4, 0, 0, 0)
+
+        self.imgor = "..\\img\\perekr-4.jpg"
+        self.img = self.scale_bitmap(self.imgor, 150, 150)
+        self.bitmap_4 = wx.StaticBitmap(self.panel_1, wx.ID_ANY, wx.Bitmap(100, 100, wx.BITMAP_TYPE_ANY), style=wx.BORDER_NONE)
+        self.bitmap_4.SetBitmap(wx.Bitmap(self.img))
+        grid_sizer_3.Add(self.bitmap_4, 0, wx.ALIGN_CENTER, 0)
 
         self.bitmap_5 = wx.StaticBitmap(self.panel_1, wx.ID_ANY, wx.Bitmap(100, 100, wx.BITMAP_TYPE_ANY))
         grid_sizer_3.Add(self.bitmap_5, 0, 0, 0)
@@ -107,20 +111,23 @@ class SeconPageFrame(wx.Frame):
         grid_sizer_2.Add(bitmap_3, 0, 0, 0)
         sizer_2.Add(grid_sizer_2, 1, wx.EXPAND, 0)
 
+        self.button_1 = wx.Button(self.panel_1, wx.ID_ANY, "Далее")
+        sizer_2.Add(self.button_1, 0, wx.ALIGN_RIGHT, 0)
+
         self.panel_1.SetSizer(sizer_2)
         sizer_1.Add(self.panel_1, 1, wx.EXPAND, 0)
         self.SetSizer(sizer_1)
         self.Layout()
 
     def good(self):
-        self.img1 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/123.jpg"
+        self.img1 = "../img/123.jpg"
         self.img4 = self.scale_bitmap(self.img1, 50, 50)
         self.bitmap_2.SetBitmap(wx.Bitmap(self.img1))
         self.bitmap_2.Show()
         self.Refresh()
 
     def bad(self):
-        self.img2 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/bad.jpg"
+        self.img2 = "../img/bad.jpg"
         self.img3 = self.scale_bitmap(self.img2, 70, 50)
         self.bitmap_3.SetBitmap(wx.Bitmap(self.img3))
         self.bitmap_3.Show()
@@ -146,7 +153,7 @@ class SeconPageFrame(wx.Frame):
                 self.file.close()
                 print("good")
                 self.bitmap_2.Hide()
-                self.img1 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/123.jpg"
+                self.img1 = "../img/123.jpg"
                 self.img4 = self.scale_bitmap(self.img1, 50, 50)
                 self.bitmap_2.SetBitmap(wx.Bitmap(self.img4))
                 self.bitmap_2.Show()
@@ -154,7 +161,7 @@ class SeconPageFrame(wx.Frame):
             else:
                 print("bad")
                 self.bitmap_2.Hide()
-                self.img2 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/bad.jpg"
+                self.img2 = "../img/bad.jpg"
                 self.img3 = self.scale_bitmap(self.img2, 70, 50)
                 self.bitmap_2.SetBitmap(wx.Bitmap(self.img3))
                 self.bitmap_2.Show()
@@ -165,7 +172,7 @@ class SeconPageFrame(wx.Frame):
             if str(self.pr_Vert) == self.text_ctrl_2.GetValue() and len(self.text_ctrl_2.GetValue()) > 0:
                 print("good")
                 self.bitmap_3.Hide()
-                self.img1 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/123.jpg"
+                self.img1 = "../img/123.jpg"
                 self.img4 = self.scale_bitmap(self.img1, 50, 50)
                 self.bitmap_3.SetBitmap(wx.Bitmap(self.img4))
                 self.bitmap_3.Show()
@@ -173,7 +180,7 @@ class SeconPageFrame(wx.Frame):
             else:
                 print("Bad")
                 self.bitmap_3.Hide()
-                self.img2 = "/Users/danamir/PycharmProjects/odd-perekrestok/img/bad.jpg"
+                self.img2 = "../img/bad.jpg"
                 self.img3 = self.scale_bitmap(self.img2, 70, 50)
                 self.bitmap_3.SetBitmap(wx.Bitmap(self.img3))
                 self.bitmap_3.Show()

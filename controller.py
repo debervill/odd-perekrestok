@@ -10,7 +10,7 @@ def hex_to_rgb(value):
 def setBacgroundColor():
     """
     Устанавливает цвет панели для приложения
-    :return:
+    :return: цвет в hex
     """
     hex_color = "#DBF0B2"
     color =hex_to_rgb(hex_color)
