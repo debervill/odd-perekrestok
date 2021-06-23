@@ -40,8 +40,12 @@ class SecondPageFrame(wx.Frame):
 
         self.runPath = os.path.abspath(__file__)
         print(self.runPath)
+
         if platform.system() == "Windows":
-            self.imgPath = "..\\img\\"
+            self.delitel = "\\"
+            self.imgPath = self.runPath[:-17] + "img" + self.delitel
+
+            print(self.imgPath)
 
 
         self.__set_properties()
