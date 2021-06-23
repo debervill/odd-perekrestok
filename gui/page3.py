@@ -618,9 +618,11 @@ class Page3Frame(wx.Frame):
 				self.text_ctrl_1.SetValue(str(self.s1))
 				self.Refresh()
 	def gopage4(self, event):
-		from gui import page4
-		page4.MyApp.OnInit(page4)
-		self.Destroy()
+		#from gui import page4
+		#page4.MyApp.OnInit(page4)
+		#self.Destroy()
+		pass
+
 
 
 class Page3(wx.App):

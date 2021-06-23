@@ -5,21 +5,26 @@ from db.models import Student
 from sqlalchemy import exists
 from db.models import Session
 from gui import SecondPage
-
 import logging
+import platform
 import os
 
-logging.basicConfig(filename="app.log",
+
+#\ - винда | - другие ос
+
+
+class MyFrame(wx.Frame):
+	def __init__(self, *args, **kwds):
+
+		logging.basicConfig(filename="app.log",
 							filemode='a',
 							format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
 							datefmt='%H:%M:%S',
 							level=logging.DEBUG)
 
-logging.info("Running Urban Planning")
+		logging.info("main page runing")
 
 
-class MyFrame(wx.Frame):
-	def __init__(self, *args, **kwds):
 		# begin wxGlade: MyFrame.__init__
 		kwds["style"] = kwds.get("style", 0) | wx.DEFAULT_FRAME_STYLE
 		wx.Frame.__init__(self, *args, **kwds)
@@ -28,7 +33,7 @@ class MyFrame(wx.Frame):
 		self.inpt_familia = wx.TextCtrl(self.panel_1, wx.ID_ANY, "")
 		self.inpt_group = wx.TextCtrl(self.panel_1, wx.ID_ANY, "")
 		self.inpt_zachetka = wx.TextCtrl(self.panel_1, wx.ID_ANY, "")
-		self.btn_settings = wx.Button(self.panel_1, wx.ID_ANY, u"\u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438")
+		self.btn_settings = wx.Button(self.panel_1, wx.ID_ANY, u"Настройки")
 		self.btn_next = wx.Button(self.panel_1, wx.ID_ANY, u"\u0414\u0430\u043b\u0435\u0435")
 
 		self.btn_settings.Bind(wx.EVT_BUTTON, self.setup)
@@ -103,9 +108,6 @@ class MyFrame(wx.Frame):
 			dlg.Destroy()
 
 	def go_page2(self, event):
-
-
-
 		name = self.inpt_name.GetValue()
 		name = name.replace(' ', '')
 
@@ -136,12 +138,9 @@ class MyFrame(wx.Frame):
 			new_session.add(student)
 			new_session.commit()
 
-
+		from gui import SecondPage
 		SecondPage.SecondPage.OnInit(SecondPage)
 		self.Destroy()
-
-
-
 
 	# todo Перенести весь функционал из main.py
 	# todo Подключить логирование
@@ -150,7 +149,7 @@ class MyFrame(wx.Frame):
 
 
 	def setup(self):
-		pass
+		print("Setup pressed")
 
 
 class MyApp(wx.App):
